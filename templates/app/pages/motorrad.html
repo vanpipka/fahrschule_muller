@@ -1,0 +1,116 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<section class="articles-section pb60">
+    <div class="pt80 pb40">
+    </div>
+    <div class="container">
+
+        <div class="articles-section__title">
+            <h1 class="title-1">Führerschein für Motorräder</h1>
+        </div>
+
+        <div class="article-page">
+            <div class="article-page__wrapper content">
+
+                <p><img src="/static/img/categories/moto_a.webp" alt="" width="" height="" loading="lazy"></p>
+                
+                <p>Wir bieten eine vielfältige Auswahl an Kursen für die Klassen A, A1, A2 und AM, damit Sie sicher und selbstbewusst auf zwei Rädern unterwegs sein können.</p>
+                <p>Egal, ob Sie gerade erst Ihre ersten Erfahrungen auf einem Mofa sammeln oder sich auf den Weg machen, schwere Motorräder zu beherrschen, unsere erfahrenen Fahrlehrer stehen Ihnen während des gesamten Ausbildungsprozesses zur Seite.</p>
+                
+                <h2>Umfassendes Schulungsprogramm</h2>
+                <ul>
+                    <li>Unser umfassendes Schulungsprogramm deckt alle Aspekte des Motorradfahrens ab, von den Grundlagen der Fahrzeugbedienung bis hin zu fortgeschrittenen Fahrtechniken.</li>
+                    <li>Wir passen unsere Kurse individuell an Ihre Bedürfnisse und Ihr Erfahrungsniveau an, um sicherzustellen, dass Sie optimal auf Ihre Fahrprüfung vorbereitet sind.</li>
+                </ul>
+
+                <h2>Unser Ziel</h2>
+                <ul>
+                    <li>Unser Ziel ist es, Ihnen nicht nur dabei zu helfen, Ihren Motorrad-Führerschein zu erhalten, sondern auch Ihnen das nötige Vertrauen und Können zu vermitteln, um sicher und verantwortungsbewusst auf den Straßen unterwegs zu sein.</li>
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="articles-section__title">
+                <h2 class="title-2">Übersicht über die Fahrerlaubnisklassen</h2>
+            </div>
+            <div class="articles">
+                <div class="articles__wrapper">
+                    <article class="article">
+                        <a href="/motorrad/details#klasse_a" class="article__wrapper">
+
+                            <div class="article__img">
+                                <picture>
+                                    <img loading="lazy" src="/static/img/categories/moto_a.webp" alt="Die Klasse A betrifft alle Krafträder und dreirädige Kraftfahrzeuge." width="400" height="400">
+                                </picture>
+                            </div>
+
+                            <div class="article__title">
+                                <h2>Klasse A</h2>
+                            </div>
+
+                        </a>
+                    </article>
+                    <article class="article">
+                        <a href="/motorrad/details#klasse_a1" class="article__wrapper">
+
+                            <div class="article__img">
+                                <picture>
+                                    <img loading="lazy" src="/static/img/categories/moto_a2.webp" alt="Die Klasse A1 betrifft Krafträder mit einem Hubraum von bis zu 125ccm, einer Nennleistung von bis zu 11kW, und dreirädige Kraftfahrzeuge mit einer Nennleistung von bis zu 15kW" width="400" height="400">
+                                </picture>
+                            </div>
+
+                            <div class="article__title">
+                                <h2>Klasse A1</h2>
+                            </div>
+
+                        </a>
+                    </article>
+                    <article class="article">
+                        <a href="/motorrad/details#klasse_a2" class="article__wrapper">
+
+                            <div class="article__img">
+                                <picture>
+                                    <img loading="lazy" src="/static/img/categories/moto_a3.webp" alt="Die Klasse A2 betrifft Krafträder mit einer Nennleistung von bis zu 35kW (bei einem Leistung/Leergewicht-Verhältnis bis zu 0,2kW/kg), die nicht von einem Kraftrad mit über 70kW Motorleistung abgeleitet sind." width="400" height="400">
+                                </picture>
+                            </div>
+
+                            <div class="article__title">
+                                <h2>Klasse A2</h2>
+                            </div>
+
+                        </a>
+                    </article>
+
+                    <article class="article">
+                        <a href="/motorrad/details#klasse_am" class="article__wrapper">
+
+                            <div class="article__img">
+                                <picture>
+                                    <img loading="lazy" src="/static/img/categories/mofa.webp" alt="Die Klasse A2 betrifft Krafträder mit einer Nennleistung von bis zu 35kW (bei einem Leistung/Leergewicht-Verhältnis bis zu 0,2kW/kg), die nicht von einem Kraftrad mit über 70kW Motorleistung abgeleitet sind" width="400" height="400">
+                                </picture>
+                            </div>
+
+                            <div class="article__title">
+                                <h2>Klasse AM</h2>
+                            </div>
+
+                        </a>
+                    </article>
+                    
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}

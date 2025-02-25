@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/img/logo/ico.png" type="image/x-icon">
+        <title>{% block title %}Fahrschule SVS Müller{% endblock %}</title>
+        <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="/static/css/lightbox.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+    <body class="page__body body">
+        <div class="body__wrapper">
+            {% include "app/includes/important_section.html" %}
+            {% include "app/includes/header.html" %}
+            <main class="main">
+                {% block content %}{% endblock %}
+            </main>
+        
+            {% include "app/includes/footer.html" %}  <!-- Вставляем футер -->
+        </div>
+    </body>
+</html>

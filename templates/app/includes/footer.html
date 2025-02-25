@@ -1,0 +1,199 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer__nav footer-nav"">
+        <div class="footer-nav__item">
+            <h2>Kurse</h2>
+            <ul>
+                <li><a href="">PKW-Führerschein</a></li>
+                <li><a href="">LKW-Führerschein</a></li>
+                <li><a href="/motorrad/">Kraftrad-Führerschein</a></li>
+                <li><a href="">Berufskraftfahrer</a></li>
+                <li><a href="">Aufbauseminare</a></li>
+                <li><a href="">Gabelstaplerschein</a></li>
+            </ul>
+        </div>
+        <div class="footer-nav__item">
+            <h2>Unterrichtszeiten</h2>
+            <ul>
+                <li><a href="">Mo.: 18:00 – 19:30</a></li>
+                <li><a href="">Do.: 18:00 – 19:30</a></li>
+                <li><a href="">Sa.: nach Absprache</a></li>
+            </ul>
+        </div>
+        <div class="footer-nav__item">
+            <h2>Fahrschule</h2>
+            <ul>
+                <li><a href="/team">Team</a></li>
+                <li><a href="">Fuehrerschein kosten</a></li>
+                <li><a href="">...</a></li>
+                <li><a href="">...</a></li>
+                <li><a href="">...</a></li>
+            </ul>
+        </div>
+        <div class="footer-nav__item">
+            <h2>Impressum</h2>
+            <ul>
+                <li>
+                    <a href="">Datenschutz</a>
+                </li>
+                <li>
+                    <a href="">Haftungsausschluss</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer__copyright footer-copyright">
+        <div class="footer-copyright__item">
+            <p>© Copyright 2001-{% now "Y" %}.</p>
+            <h2>Fahrschule SVS Müller</h2>
+            <p>32052&nbsp;Herford&nbsp;Johannisstraße&nbsp;36</p>
+            <p>
+                <a href="tel:0172-792 88 78">0172-792 88 78</a>
+                <a href="email:info@fahrschule-svs-mueller.de">info@fahrschule-svs-mueller.de</a>
+            </p>
+        </div>
+
+        <div class="footer-copyright__desc">
+            <p>Wir bitten um telefonische Voranmeldung.</p>
+        </div>
+
+        <div class="footer-copyright__links">
+            <a class="" href="" target="_blank"><span>Google</span></a>
+        </div>
+        <div class="footer-copyright__web">
+            <p>Ein Theme von <a href="https://wa.me/" target="_blank">Vanpip</a></p>
+        </div>
+
+    </div>
+    </div>
+</footer>
+
+</div>
+
+<div id="modal-call" class="modal">
+    <div class="modal-content modal-content--form">
+
+        <button type="button" aria-label="Закрыть модальное окно" class="modal-content__close" data-js-modal-close="">
+
+            <div class="close">
+                <div class="close__left"></div>
+                <div class="close__right"></div>
+            </div>
+
+        </button>
+
+        <div class="modal-content__body">
+
+            <div class="modal-content__title">
+                <h2 class="title-2" data-js-modal-title=""></h2>
+                <div class="title-sub" data-js-modal-subtitle=""></div>
+            </div>
+
+            <div class="modal-content__form form-block">
+
+                <form action="#" method="POST" class="form form--modal" data-js-form="">
+
+                    <div class="form__inputs-hidden">
+                        <input type="text" name="formName" hidden="" value="">
+                        <!-- <input type="url" name="url" pattern="https://.*" hidden value=""> pattern="https?://.+" -->
+                        <input type="url" name="url" hidden="" value="https://autonomer1.ru/">
+                    </div>
+
+                    <div class="form__inputs form__inputs--window">
+                        <!--  autocomplete required -->
+                        <div class="input-container input-container--inner">
+                            <input class="input" type="text" name="name" data-mask="name" data-js-input="">
+                            <label class="label">Ваше имя</label>
+                            <div class="bar"></div>
+                        </div>
+
+                        <div class="input-container input-container--inner">
+                            <input class="input" type="tel" id="phone" name="phone" data-mask="phone" data-js-input="">
+                            <label class="label">Телефон</label>
+                            <div class="bar"></div>
+                        </div>
+
+                        <div class="input-container input-container--list" data-js-select-block="">
+                            <label class="label-list">Выберите Филиал Автошколы</label>
+
+                            <div class="form-select" data-js-input-select="">Филиалы</div>
+
+                            <ul data-js-select-list="">
+                                <li data-js-select="м.Первомайская">м. Первомайская</li>
+                                <li data-js-select="м.Новогиреево">м. Новогиреево</li>
+                                <li data-js-select="м.Шоссе Энтузиастов">м. Шоссе Энтузиастов</li>
+                                <li data-js-select="м.Бутырская">м. Бутырская</li>
+                            </ul>
+
+                            <input type="text" name="fill" value="" class="input-hidden" hidden="" data-js-select-hidden="">
+                        </div>
+
+                        <div class="input-container input-container--list" data-js-select-block="">
+                            <label class="label-list">Как с&nbsp;Вами связаться?</label>
+
+                            <div class="form-select" data-js-input-select="">Выберите способ связи</div>
+
+                            <ul data-js-select-list="">
+                                <li data-js-select="Телефон">Телефон</li>
+                                <li data-js-select="WhatsApp">WhatsApp</li>
+                                <!-- <li data-js-select="Telegram">Telegram</li> -->
+                            </ul>
+
+                            <input type="text" name="social" value="" class="input-hidden" hidden="" data-js-select-hidden="">
+                        </div>
+
+                        <div class="input-container-submit">
+
+                            <button type="submit" class="btn btn--big btn--red">Отправить</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="form-person">Нажимая кнопку отправки формы, я&nbsp;подтверждаю свое
+                согласие с&nbsp;<a href="https://autonomer1.ru/system/politika">Политикой в&nbsp;отношении обработки персональных данных</a> сайта Автошколы № 1.
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="modal-review" class="modal">
+    <div class="modal-content modal-content--rev">
+
+        <button type="button" aria-label="Закрыть модальное окно" class="modal-content__close" data-js-modal-close="">
+
+            <div class="close">
+                <div class="close__left"></div>
+                <div class="close__right"></div>
+            </div>
+
+        </button>
+
+        <div class="modal-content__body">
+
+            <div class="modal-content__title">
+                <h2 class="title-2">Bewertung eines Fahrschülers</h2>
+                <h3 class="title-3" data-js-review-name-modal=""></h3>
+                <div class="title-sub" data-js-review-date-modal=""></div>
+            </div>
+            <div class="modal-content__review" data-js-review-text-modal=""></div>
+            <div class="modal-content__review-agregator">
+                <div class="modal-content__review-agregator-desc">Alle Bewertungen über die Fahrschule lesen auf</div>
+                <a class="modal-content__review-agregator-link" href="" data-js-review-agregator-modal="" target="_blank"></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/imask.js"></script>
+<script src="/static/js/swiper-bundle.js"></script>
+<script src="/static/js/lightbox-plus-jquery.js"></script>
+<script src="/static/js/app.js?v11"></script>
