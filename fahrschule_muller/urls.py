@@ -16,13 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, team, motorrad, motorrad_details
+from .views import home, team, motorrad, motorrad_details, lkw, lkw_details, datenschutz
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('team/', team, name='team'),
     path('motorrad/details', motorrad_details, name='motorrad_details'),
     path('motorrad/', motorrad, name='motorrad'),
+    path('lkw/details', lkw_details, name='lkw_details'),
+    path('lkw/', lkw, name='lkw'),
+
+    path('datenschutz/', datenschutz, name='datenschutz'),
     path('users/', include('users.urls')),
     path('', home, name='home'),
 ]

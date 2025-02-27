@@ -14,3 +14,15 @@ def motorrad(request):
 
 def motorrad_details(request):
     return render(request, 'app/pages/motorrad_details.html')
+
+
+def lkw(request):
+    return render(request, 'app/pages/lkw.html')
+
+
+def lkw_details(request):
+    return render(request, 'app/pages/lkw_details.html')
+
+
+def datenschutz(request):
+    return render(request, 'app/pages/datenschutz.html')
