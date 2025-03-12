@@ -1,0 +1,109 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<section class="articles-section pb60">
+  <div class="pt80 pb40">
+  </div>
+  <div class="container">
+
+    <div class="articles-section__title">
+      <h1 class="title-1">Führerschein für Personenkraftwagen</h1>
+    </div>
+
+    <div class="article-page">
+      <div class="article-page__wrapper content">
+
+        <p><img src="/static/img/categories/auto.webp" alt="" width="" height="" loading="lazy"></p>
+
+        <p>Wir bieten eine umfassende Ausbildung für die Klassen B, B96 und BE, um Sie sicher und selbstbewusst auf die Straßen zu bringen.</p>
+        <p>Unsere erfahrenen Fahrlehrer stehen Ihnen während des gesamten Ausbildungsprozesses zur Seite und unterstützen Sie dabei, alle notwendigen Fähigkeiten und Kenntnisse zu erwerben, um sicher und verantwortungsbewusst Auto zu fahren.</p>
+        <p>Ob Sie ein kompletter Neuling hinter dem Lenkrad sind oder bereits Erfahrung haben, unser individuell angepasstes Schulungsprogramm wird Ihren Bedürfnissen gerecht und führt Sie Schritt für Schritt zum erfolgreichen Abschluss Ihrer Fahrprüfung.</p>
+        <p>Zusätzlich zu unseren Fahrkursen bieten wir auch spezialisierte Aufbauseminare an. Diese Seminare richten sich an Fahranfänger, auffällige Fahrer sowie an Fahrer, die unter dem Einfluss von Alkohol oder anderen Substanzen am Steuer erwischt wurden. Für weitere Informationen zu diesen Seminaren besuchen Sie bitte unsere separate Seite.</p>
+        <p>Starten Sie noch heute Ihre Reise zum Erwerb des PKW-Führerscheins bei der Fahrschule SVS Müller und bereiten Sie sich auf eine sichere und erfolgreiche Fahrt vor. Kontaktieren Sie uns jetzt, um mehr über unsere Kurse und Verfügbarkeiten zu erfahren!</p>
+      
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="articles-section__title">
+        <h2 class="title-2">Übersicht über die Fahrerlaubnisklassen</h2>
+      </div>
+      <div class="articles">
+        <div class="articles__wrapper">
+          <article class="article">
+            <a href="/pkw/details#klasse_b" class="article__wrapper">
+
+              <div class="article__img">
+                <picture>
+                  <img loading="lazy" src="/static/img/categories/auto.webp" alt="Die Klasse B betrifft Kraftfahrzeuge mit einer zulässigen Gesamtmasse von nicht mehr als 3500kg und nicht mehr als acht Sitzplätzen (Fahrersitz ausgenommen), und einem Anhänger  sofern die zulässige Gesamtmasse des Anhängers nicht 750kg und die zulässige Gesamtmasse der Kombination nicht 3500kg übersteigt." width="400" height="400">
+                </picture>
+              </div>
+
+              <div class="article__title">
+                <h2>B / B17 / B197</h2>
+              </div>
+
+            </a>
+          </article>
+          
+          <article class="article">
+            <a href="/pkw/details#klasse_b96" class="article__wrapper">
+
+              <div class="article__img">
+                <picture>
+                  <img loading="lazy" src="/static/img/categories/auto_3.webp" alt="Die Klasse B96 betrifft Kombinationen aus einem Zugfahrzeug der Klasse B und einem Anhänger mit einer zulässigen Gesamtmasse von >750kg, sofern die zulässige Gesamtmasse der Kombination 4250kg nicht übersteigt." width="400" height="400">
+                </picture>
+              </div>
+
+              <div class="article__title">
+                <h2>Klasse B96</h2>
+              </div>
+
+            </a>
+          </article>
+          <article class="article">
+            <a href="/pkw/details#klasse_b196" class="article__wrapper">
+
+              <div class="article__img">
+                <picture>
+                  <img loading="lazy" src="/static/img/categories/moto_a3.webp" alt="Kraftfahrzeuge der Klasse A1 nur in Deutschland und Kraftfahrzeuge der Klasse B." width="400" height="400">
+                </picture>
+              </div>
+
+              <div class="article__title">
+                <h2>Klasse B196</h2>
+              </div>
+
+            </a>
+          </article>
+
+          <article class="article">
+            <a href="/pkw/details#klasse_be" class="article__wrapper">
+
+              <div class="article__img">
+                <picture>
+                  <img loading="lazy" src="/static/img/categories/auto_4.webp" alt="Die Klasse BE betrifft Kombinationen aus einem Zugfahrzeug der Klasse B und einem Anhänger, sofern die zulässige Gesamtmasse des Anhängers 3500kg nicht übersteigt." width="400" height="400">
+                </picture>
+              </div>
+
+              <div class="article__title">
+                <h2>Klasse BE</h2>
+              </div>
+
+            </a>
+          </article>
+          
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}
