@@ -16,7 +16,7 @@
   </table>
 </div>
 
-<div class="taskView p-3" id="taskView" style="height: 641px;">
+<div class="taskView p-3" id="taskView" style="">
     {% for question in dataset %}
       <div class="question_section" id="question_section_{{ forloop.counter }}"{% if forloop.counter != 1 %} hidden {% endif %}>
         <div class="title" style="height: auto">{{ question.description }}</div>
@@ -26,7 +26,7 @@
             <img style="border-radius: 30pt; max-width: 300pt;" src="{{ question.img }}" alt="" width="" height="" loading="lazy">
           </div>
           {% else %}
-          <div class="d-sm-none d-md-block col-md-6 p-3">
+          <div class="d-none d-md-block col-md-6 p-3">
             <img style="border-radius: 30pt; max-width: 300pt;" src="/static/img/categories/empty.png" alt="" width="" height="" loading="lazy">
           </div>
           {% endif %}

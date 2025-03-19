@@ -3,14 +3,16 @@ function ResizeView() {
     let headerBarContainer = document.getElementById('headerBar');
     let taskViewContainer = document.getElementById('taskView');
     let navigationViewContainer = document.getElementById('navigationView');
-
-    console.log(window.innerHeight);
-    if (taskViewContainer && window.innerWidth <= 765) {
-        taskViewContainer.style.height = '100%';
+    
+    let height = 0;
+    
+    if (taskViewContainer && headerBarContainer && navigationViewContainer && mainHeaderContainer) {
+        height = (window.innerHeight - mainHeaderContainer.offsetHeight - headerBarContainer.offsetHeight - navigationViewContainer.offsetHeight);
     }
-    else if (taskViewContainer && headerBarContainer && navigationViewContainer && mainHeaderContainer) {
-        taskViewContainer.style.height = (window.innerHeight - mainHeaderContainer.offsetHeight - headerBarContainer.offsetHeight - navigationViewContainer.offsetHeight) + "px";
-    }
+    
+    if (height === 0) { return }
+    
+    taskViewContainer.style.minHeight = height + "px";
     
 }
 
