@@ -1,0 +1,478 @@
+input[type="checkbox"] {
+    transform: scale(2); /* Увеличивает чекбокс в 1.5 раза */
+    margin: 10px; /* Добавляет отступы */
+}
+
+.navigationView {
+    background-color: #D3F6DA;
+}
+
+.taskButton {
+    border: 2px solid black;
+    float: left;
+    width: 65px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 16px;
+    margin: 7px;
+    background-color: white;
+    cursor: pointer
+}
+
+.taskButton .movieTask {
+    background-image: url(../pics/kamera.png);
+    background-position: 0 0;
+    background-repeat: no-repeat
+}
+
+.activeTask {
+    border: 4px solid black;
+    margin: 5px
+}
+
+.answeredTask {
+    background-color: #1eaa66;
+    color: white
+}
+
+.markedTask {
+    background-image: url(../pics/ecke.gif);
+    background-position: top right;
+    background-repeat: no-repeat
+}
+
+.sheetTab {
+    float: left;
+    height: 27px;
+    line-height: 28px;
+    vertical-align: middle;
+    padding: 5px 20px 5px 20px;
+    font-weight: bolder;
+    border: 1px solid black;
+    border-collapse: collapse;
+    cursor: pointer;
+    background-color: white
+}
+
+.completedTab {
+    background-color: #1eaa66;
+}
+
+.activeTab {
+    background-color: #1eaa66;
+    color: white
+}
+
+.markedSheet {
+    background-image: url(../pics/ecke.gif);
+    background-position: top right;
+    background-repeat: no-repeat
+}
+
+.sheetTabContainer {
+    clear: both
+}
+
+.sheetTasksContainer {
+    clear: both;
+    background-color: #1eaa66;;
+    height: 140px
+}
+
+.headerBar {
+    background-color: #1eaa66;;
+    height: 45px;
+    width: 100%
+}
+
+.headerBar td {
+    width: 33%;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 10px
+}
+
+.headerBar .center {
+    text-align: center
+}
+
+.headerBar .right {
+    text-align: right
+}
+
+.notAnsweredTasks {
+    float: right;
+    padding: 10px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 50px;
+    background-image: url(../pics/warnung_klein.gif);
+    background-repeat: no-repeat;
+    background-position: left center
+}
+
+.navigationButtonContainer {
+    float: right
+}
+
+.navigationButtonContainer button {
+    font-size: 14pt;
+    height: 36px;
+    padding: 5px 20px 5px 20px;
+    margin: 2px 5px 2px 5px;
+    min-width: 120px;
+    cursor: pointer;
+    border: 0
+}
+
+.navigationButtonContainer .finishButton {
+    background-color: red;
+    color: white
+}
+
+.navigationButtonContainer .markButton {
+    background-color: orange
+}
+
+.navigationButtonContainer .nextButton {
+    background-color: #1eaa66;
+    color: white
+}
+
+.imageContainer {
+    position: relative;
+    float: left;
+    width: 49%;
+    margin-left: 1%;
+    text-align: center
+}
+
+.imageContainer .image {
+    width: 90%
+}
+
+.imageContainer .playicon {
+    background-image: url(../pics/playmovie.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.answerContainer {
+    float: left;
+    width: 50%
+}
+
+.answerContainer .selectionTable {
+    width: 100%
+}
+
+.answerContainer .selectionTable td {
+    vertical-align: middle;
+    height: 100px;
+    padding: 5px
+}
+
+.answerContainer .selectionText {
+    width: 100%
+}
+
+.taskView {
+    background-color: #D3F6DA;
+    font-size: 14pt
+}
+
+.taskView .title {
+    font-size: 16pt;
+    font-weight: bold;
+    height: 120px;
+    padding: 10px
+}
+
+.taskView .movieButton {
+    background-color: #4D555B;
+    color: #FFFFFF;
+    border: 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-bottom: 30px;
+    cursor: pointer
+}
+
+.keyboardTable {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.keyboardTable td {
+    border: 1px solid black;
+    margin: 2px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    cursor: pointer
+}
+
+.textInputTable {
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px
+}
+
+.textInputTable td {
+    padding: 5px
+}
+
+.textInputTable .input {
+    border: 1px solid black;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    padding: 2px;
+    overflow: hidden
+}
+
+.textInputTable .activeInput {
+    border: 2px solid black
+}
+
+.textInputTable .solutionInput {
+    border: 2px solid red
+}
+
+.videoPlayer {
+    z-index: 200;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #D3F6DA
+}
+
+.movieCounter {
+    font-weight: bold;
+    font-size: 18pt
+}
+
+.movieCounterRed {
+    color: red
+}
+
+.warningPic {
+    margin: 10px;
+    margin-right: 20px
+}
+
+.evaluationView {
+    background-color: white
+}
+
+.evaluationView .classResultTable {
+    width: 100%
+}
+
+.evaluationView .classResultTable .caption {
+    vertical-align: middle;
+    padding: 5px;
+    width: 50%;
+    font-weight: bold;
+    font-size: 14pt
+}
+
+.evaluationView .classResultTable .result {
+    width: 20%
+}
+
+.evaluationView .classResultTable .resultText {
+    font-weight: bold;
+    font-size: 14pt;
+    vertical-align: middle;
+    padding: 5px
+}
+
+.evaluationView .classResultTable .passed {
+    background-color: #1eaa66;
+}
+
+.evaluationView .classResultTable .failed {
+    background-color: red
+}
+
+.evaluationView .sheetContainer {
+    width: 100%
+}
+
+.evaluationView .sheetContainer .header {
+    background-color: #004080;
+    color: white;
+    padding: 5px;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.evaluationView .sheetContainer .categoryTable {
+    width: 100%
+}
+
+.evaluationView .sheetContainer .categoryTable .caption {
+    width: 45%;
+    font-size: 14pt
+}
+
+.evaluationView .sheetContainer .categoryTable .counter {
+    width: 5%
+}
+
+.evaluationView .sheetContainer .categoryTable .correct {
+    height: 40px;
+    background-color: #1eaa66;
+    cursor: pointer
+}
+
+.evaluationView .sheetContainer .categoryTable .wrong {
+    height: 40px;
+    background-color: red;
+    cursor: pointer
+}
+
+.enlargedImage {
+    z-index: 200;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+
+.startScreen {
+    background-image: url(../pics/startseite.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: top left
+}
+
+.startScreen .classList {
+    position: absolute;
+    top: 76%;
+    left: 3%;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.startScreen .tfepText {
+    position: absolute;
+    left: 1%;
+    top: 70%;
+    font-size: 32pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.startScreen .startButton {
+    position: absolute;
+    min-width: 10%;
+    right: 3%;
+    bottom: 6%;
+    padding: 20px 30px 20px 30px;
+    box-shadow: 1px 3px 5px grey;
+    cursor: pointer;
+    font-size: 24pt;
+    font-weight: bold;
+    background-color: cadetblue;
+    color: #FFFFFF
+}
+
+.startScreen .startButton:hover {
+    box-shadow: 1px 3px 15px grey
+}
+
+.evaluationScreen {
+    background-image: url(../pics/auswertungsscreen.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: top left
+}
+
+.evaluationScreen .showButton {
+    position: absolute;
+    left: 17%;
+    top: 67%;
+    width: 26%;
+    height: 10%;
+    cursor: pointer
+}
+
+.evaluationScreen .name {
+    position: absolute;
+    top: 49%;
+    left: 47%;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.evaluationScreen .station {
+    position: absolute;
+    top: 55%;
+    left: 47%;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.evaluationScreen .showButtonArabic {
+    position: absolute;
+    left: 47%;
+    top: 67%;
+    width: 26%;
+    height: 10%;
+    cursor: pointer
+}
+
+.evaluationScreen .nameArabic {
+    position: absolute;
+    text-align: right;
+    top: 49%;
+    left: 15%;
+    width: 30%;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.evaluationScreen .stationArabic {
+    position: absolute;
+    text-align: right;
+    top: 55%;
+    left: 15%;
+    width: 30%;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #b6c69c
+}
+
+.noTitleDialog .ui-dialog-titlebar {
+    display: none
+}

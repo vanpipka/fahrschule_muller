@@ -3,9 +3,10 @@
         <div class="installment-form mt40">
             <div class="form-block">
 
-                <form action="#" method="POST" class="form" data-js-form="">
-
+                <form action="/anfrage/" method="POST" class="form" data-js-form="">
+                    {% csrf_token %}
                     <div class="form__inputs form__inputs--section form__inputs--white">
+                        <input class="input" type="text" hidden name="form_name" value="erste_hilfe" data-js-input="">
                         <div class="input-container input-container--inner">
                             <input class="input" type="text" name="name" data-mask="name" data-js-input="">
                             <label class="label">Name</label>

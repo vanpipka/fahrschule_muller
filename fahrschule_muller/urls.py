@@ -16,20 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, team, motorrad, motorrad_details, lkw, lkw_details, datenschutz, pkw, pkw_details, b_17, aufbauseminare
+from fahrschule_muller import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('team/', team, name='team'),
-    path('b_17/', b_17, name='b_17'),
-    path('aufbauseminare/', aufbauseminare, name='aufbauseminare'),
-    path('motorrad/details', motorrad_details, name='motorrad_details'),
-    path('motorrad/', motorrad, name='motorrad'),
-    path('lkw/details', lkw_details, name='lkw_details'),
-    path('lkw/', lkw, name='lkw'),
-    path('pkw/', pkw, name='pkw'),
-    path('pkw/details', pkw_details, name='pkw_details'),
-    path('datenschutz/', datenschutz, name='datenschutz'),
+    path('team/', views.team, name='team'),
+    path('b_17/', views.b_17, name='b_17'),
+    path('aufbauseminare/', views.aufbauseminare, name='aufbauseminare'),
+    path('motorrad/details', views.motorrad_details, name='motorrad_details'),
+    path('motorrad/', views.motorrad, name='motorrad'),
+    path('lkw/details', views.lkw_details, name='lkw_details'),
+    path('lkw/', views.lkw, name='lkw'),
+    path('pkw/', views.pkw, name='pkw'),
+    path('pkw/details', views.pkw_details, name='pkw_details'),
+    path('datenschutz/', views.datenschutz, name='datenschutz'),
     path('users/', include('users.urls')),
-    path('', home, name='home'),
+    path('exam/', include('exam.urls')),
+    path('anfrage/', views.anfrage, name='anfrage'),
+    path('', views.home, name='home'),
 ]
+
+# Подключаем медиа-файлы в режиме отладки (DEBUG=True)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

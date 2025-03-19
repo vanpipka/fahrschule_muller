@@ -1,0 +1,152 @@
+{% extends "app/pages/base_exam.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+{% csrf_token %}
+
+<div class="headerBar" id = "headerBar">
+  <table class="headerBar">
+    <tr>
+      <td>Базовый материал</td>
+      <td class="center">Max Mustermann - место 01</td>
+      <td class="right">Баллы: ...</td>
+    </tr>
+  </table>
+</div>
+
+<div class="taskView p-3" id="taskView" style="height: 641px;">
+    {% for question in dataset %}
+      <div class="question_section" id="question_section_{{ forloop.counter }}"{% if forloop.counter != 1 %} hidden {% endif %}>
+        <div class="title" style="height: auto">{{ question.description }}</div>
+        <div class="row align-items-center">
+          <div class="col-md-6 col-sm-12 p-3">
+            {% if question.img %}
+            <img style="border-radius: 30pt; max-width: 300pt;" src="{{ question.img }}" alt="" width="" height="" loading="lazy">
+            {% else %}
+            <img style="border-radius: 30pt; max-width: 300pt;" src="/static/img/categories/auto_5.webp" alt="" width="" height="" loading="lazy">
+            {% endif %}
+            <div class="playicon" style="display: none;">
+            </div>
+            <div class="imageSubTitle">&nbsp;</div>
+          </div>
+  
+          <div class="col-md-6 col-sm-12 p-3">
+            <div class="subTitle">{{ question.answer_description }}</div>
+            <div class="checkbox-container" id="cbx_cont_{{ question.id }}">
+              {% for answer in question.answers %}
+              <div class="row">
+                <label><input type="checkbox" class="cbx_cont_cbx" name="option1" id="cbx_cont_{{ question.id }}_{{forloop.counter}}"> {{ answer }} </label>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+
+<div class="navigationView" id="navigationView">
+  <div class="sheetTabContainer">
+    <div class="navigationButtonContainer">
+      <button class="finishButton" id="finishButton" onclick="checkResult()">Сдать</button>
+      <button class="nextButton" id ="nextButton">Дальше</button>
+    </div>
+  </div>
+  <div class="sheetTasksContainer">
+    <div class="taskButtonContainer" style="display: block;">
+      {% for question in dataset %}
+        <div class="taskButton {% if forloop.counter == 1 %} activeTask {% endif %}" id="question_{{ forloop.counter }}">{{ forloop.counter }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/exam/application.js"></script>
+  
+<script>
+  
+  const ANSWERS_MAP = new Map();
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    let nextButton = document.getElementById("nextButton");
+    if (nextButton) { nextButton.addEventListener("click", (a) => nextButtonClick(a)); }
+
+    let pageLinks = document.querySelectorAll("div .taskButton");
+    pageLinks.forEach(link => { link.addEventListener("click", (a) => changeQuestion(a.target)); });
+
+    let answersCbx = document.querySelectorAll("div .cbx_cont_cbx");
+    answersCbx.forEach(cbx => { cbx.addEventListener("click", (a) => setAnswer(cbx)); });
+  });
+
+  function nextButtonClick(button) { changeQuestion(getNextPageLink()) }
+  
+  function changeQuestion(pointer) {
+    if (!pointer) { return; }
+    let questionId = pointer.id.replace('question_', '');
+    setActivePageLink(questionId);
+    setActivePageContainer(questionId);
+  }
+
+  function getNextPageLink() {
+
+    let pageLinks = document.querySelectorAll("div .taskButton");
+    let activeLink = null;
+    let result = null;
+    
+    for (let i = 0; i < pageLinks.length; i++) {
+      if (pageLinks[i].classList.contains("activeTask")) { activeLink = pageLinks[i]; break; }
+    }
+    if (activeLink) { result = document.getElementById("question_" +  (parseInt(activeLink.id.replace('question_', '')) +1)); }
+    return result;
+  }
+  
+  function setActivePageLink(pageNumber) {
+    
+    let pageLinks = document.querySelectorAll("div .taskButton");
+      
+    for (let i = 0; i < pageLinks.length; i++) {
+      let classList = pageLinks[i].classList;
+      if (pageLinks[i].id === 'question_'+ pageNumber) { classList.add('activeTask'); } 
+      else { classList.remove('activeTask'); }
+    }
+  }
+
+  function setActivePageContainer(pageNumber) {
+    let pageSections = document.querySelectorAll("div .question_section");
+    for (let i = 0; i < pageSections.length; i++) { pageSections[i].hidden = pageSections[i].id !== 'question_section_' + pageNumber; }
+  }
+  
+  function setAnswer(el) {
+    let questionId = el.id.split('_')[2];
+    let answers = [];
+    let answersCbx = document.querySelectorAll("div .cbx_cont_cbx");
+
+    for (let i = 0; i < answersCbx.length; i++) {
+      if (answersCbx[i].checked && answersCbx[i].id.includes(questionId)) { answers.push(parseInt(answersCbx[i].id.split('_')[3])); }
+    }
+    ANSWERS_MAP.set(questionId, answers);
+  } 
+  function checkResult() {
+    
+    fetch("", {
+      method: "POST",
+      body: JSON.stringify({answers: Array.from(ANSWERS_MAP.entries())}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "X-CSRFToken": document.getElementsByName('csrfmiddlewaretoken')[0].value
+      }
+    })
+            .then(response => response.json())
+            .then(data => {
+              window.location.href = data.redirect_url; // Выполняем редирект
+            });
+  }
+  
+</script>
+
+{% endblock %}

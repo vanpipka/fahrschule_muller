@@ -331,17 +331,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const inputsForm = form.querySelectorAll('[data-js-input]');
       inputsForm.forEach(function (input) {
         // console.log(input);
-        const label = input.closest('.input-container.input-container--inner').querySelector('.label');
+        const input_elmnt = input.closest('.input-container.input-container--inner')
+           
+        if (input_elmnt) {
+          const labe = input_elmnt.querySelector('.label');
 
-        input.addEventListener('focus', function () {
-          label.classList.add('label--active');
-        });
+          input.addEventListener('focus', function () {
+            label.classList.add('label--active');
+          });
 
-        input.addEventListener('blur', function () {
-          if (input.value.length === 0) {
-            label.classList.remove('label--active');
-          }
-        });
+          input.addEventListener('blur', function () {
+            if (input.value.length === 0) {
+              label.classList.remove('label--active');
+            }
+          });
+        };
       })
 
 
@@ -390,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // ================= Выпадающий список =================
 
       // ================= Валидация и отправка формы =================
+      /*
       form.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -504,6 +509,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
       });
+    
+      */
     }
   }
 

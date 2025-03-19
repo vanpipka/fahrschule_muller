@@ -1,0 +1,39 @@
+{% extends "app/pages/base_exam.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<div class="ui-dialog-content ui-widget-content p-3" style="" id="ui-id-3">
+    <div class="evaluationView">
+        <div class="classResults">
+            <table class="classResultTable">
+                <tr>
+                    <td class="caption">A - 106 Fehlerpunkte</td>
+                    <td class="result failed">&nbsp;</td>
+                    <td class="resultText">НЕ СДАН</td>
+                </tr>
+            </table>
+        </div>
+        <div class="sheetContainer">
+
+            {% for key_t, value_t in dataset.items %}
+            <div class="header">{{ key_t }}</div>
+            <table class="categoryTable">
+                {% for key_k, value_k in value_t.items %}
+                <tr>
+                    <td class="caption">{{ key_k }}</td>
+                    <td class="counter">{{value_k.0}}/{{value_k.1|length}}</td>
+                    
+                    {% for i in value_k.1 %}
+                    <td class="{% if i %}correct{% else %}wrong{% endif %}">&nbsp;</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
