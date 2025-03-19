@@ -21,16 +21,15 @@
       <div class="question_section" id="question_section_{{ forloop.counter }}"{% if forloop.counter != 1 %} hidden {% endif %}>
         <div class="title" style="height: auto">{{ question.description }}</div>
         <div class="row align-items-center">
+          {% if question.img %}
           <div class="col-md-6 col-sm-12 p-3">
-            {% if question.img %}
             <img style="border-radius: 30pt; max-width: 300pt;" src="{{ question.img }}" alt="" width="" height="" loading="lazy">
-            {% else %}
-            <img style="border-radius: 30pt; max-width: 300pt;" src="/static/img/categories/empty.png" alt="" width="" height="" loading="lazy">
-            {% endif %}
-            <div class="playicon" style="display: none;">
-            </div>
-            <div class="imageSubTitle">&nbsp;</div>
           </div>
+          {% else %}
+          <div class="d-sm-none d-md-block col-md-6 p-3">
+            <img style="border-radius: 30pt; max-width: 300pt;" src="/static/img/categories/empty.png" alt="" width="" height="" loading="lazy">
+          </div>
+          {% endif %}
   
           <div class="col-md-6 col-sm-12 p-3">
             <div class="subTitle">{{ question.answer_description }}</div>
