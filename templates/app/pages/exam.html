@@ -9,15 +9,17 @@
 <div class="headerBar" id = "headerBar">
   <table class="headerBar">
     <tr>
-      <td>Grundstoff</td>
+      <td><span id="thema">{{dataset.0.thema.name}}</span></td>
       <td class="center">Max Mustermann</td>
-      <td class="right">Punkte: ...</td>
+      <td class="right">Punkte: <span id="penalty_points">{{dataset.0.penalty_points}}</span></td>
     </tr>
   </table>
 </div>
 
 <div class="taskView p-3" id="taskView" style="">
     {% for question in dataset %}
+      <input type="hidden" id="question_penalty_{{forloop.counter}}" value="{{question.penalty_points}}">
+      <input type="hidden" id="question_thema_{{forloop.counter}}" value="{{question.thema.name}}">
       <div class="question_section" id="question_section_{{ forloop.counter }}"{% if forloop.counter != 1 %} hidden {% endif %}>
         <div class="title" style="height: auto">{{ question.description }}</div>
         <div class="row align-items-center">
@@ -124,6 +126,9 @@
       if (!answer) { classList.remove('hasAnswer');  }
       else if (answer.length > 0) { classList.add('hasAnswer'); } 
     }
+    
+    document.getElementById("thema").innerHTML = document.getElementById("question_thema_"+pageNumber).value;
+    document.getElementById("penalty_points").innerHTML = document.getElementById("question_penalty_"+pageNumber).value;
   }
 
   function setActivePageContainer(pageNumber) {

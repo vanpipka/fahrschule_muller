@@ -40,6 +40,7 @@ class Question(models.Model):
     thema = models.ForeignKey(Thema, null=True, on_delete=models.CASCADE, related_name="questions_thema")
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE, related_name="questions_category")
     answer_description = models.TextField(blank=True)
+    penalty_points = models.IntegerField(default=0)
     answer_1 = models.TextField(blank=True)
     answer_2 = models.TextField(blank=True)
     answer_3 = models.TextField(blank=True)
@@ -59,6 +60,7 @@ class Question(models.Model):
         
         question_dto = {
             'id': self.id,
+            'penalty_points': self.penalty_points,
             'img': "",
             'video': "",
             'description': self.description,
