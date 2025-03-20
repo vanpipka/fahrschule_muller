@@ -21,9 +21,15 @@
       <div class="question_section" id="question_section_{{ forloop.counter }}"{% if forloop.counter != 1 %} hidden {% endif %}>
         <div class="title" style="height: auto">{{ question.description }}</div>
         <div class="row align-items-center">
-          {% if question.img %}
+          {% if question.img or question.video %}
           <div class="col-md-6 col-sm-12 p-3">
-            <img style="border-radius: 30pt; max-width: 300pt;" src="{{ question.img }}" alt="" width="" height="" loading="lazy">
+            {% if question.video %}
+              <video controls style="border-radius: 30pt; max-width: 100%;">
+                <source src="{{ question.video }}" type="video/mp4">
+              </video>
+            {% else %}
+              <img style="border-radius: 30pt; max-width: 100%;" src="{{ question.img }}" alt="" width="" height="" loading="lazy">
+            {% endif %}
           </div>
           {% else %}
           <div class="d-none d-md-block col-md-6 p-3">

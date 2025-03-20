@@ -59,7 +59,8 @@ class Question(models.Model):
         
         question_dto = {
             'id': self.id,
-            'img': f"{settings.MEDIA_URL}{self.file}" if self.file else "",
+            'img': "",
+            'video': "",
             'description': self.description,
             'answer_description': self.answer_description,
             'right_answers': self.right_answers,
@@ -67,4 +68,10 @@ class Question(models.Model):
             'thema': { 'name': self.thema.name, 'id': self.thema.id },
             'category': { 'name': self.category.name, 'id': self.category.id }
         }
+        
+        if "mp4" in self.file.name:
+            question_dto["video"] = f"{settings.MEDIA_URL}{self.file}"
+        elif self.file:
+            question_dto["img"] = f"{settings.MEDIA_URL}{self.file}"
+            
         return question_dto
