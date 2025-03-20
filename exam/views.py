@@ -37,4 +37,8 @@ def exam_result(request):
     except json.JSONDecodeError:
         render(request, 'app/pages/500.html')
      
-    return render(request, 'app/pages/exam_result.html', context={'dataset': convert_result_to_context(questions)})
+    data = convert_result_to_context(questions)
+    
+    print(data)
+     
+    return render(request, 'app/pages/exam_result.html', context={'dataset': data})

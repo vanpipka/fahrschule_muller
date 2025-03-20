@@ -9,15 +9,15 @@
         <div class="classResults">
             <table class="classResultTable">
                 <tr>
-                    <td class="caption">A - 106 Fehlerpunkte</td>
-                    <td class="result failed">&nbsp;</td>
-                    <td class="resultText">НЕ СДАН</td>
+                    <td class="caption">Fehlerpunkte: {{ dataset.result.penalty_points }}</td>
+                    <td class="result {% if dataset.result.penalty_points > 10 %}failed{% else %}passed{% endif %}">&nbsp;</td>
+                    <td class="resultText">{{ dataset.result.result_text }}</td>
                 </tr>
             </table>
         </div>
         <div class="sheetContainer">
 
-            {% for key_t, value_t in dataset.items %}
+            {% for key_t, value_t in dataset.answers.items %}
             <div class="header">{{ key_t }}</div>
             <table class="categoryTable">
                 {% for key_k, value_k in value_t.items %}

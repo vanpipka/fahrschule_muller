@@ -27,7 +27,8 @@ def check_exam_answers(questions, answers):
     
 # questions - result of check_exam_answers
 def convert_result_to_context(questions):
-    
+
+    penalty_points = 0
     answers_dict = dict()
     
     for i in questions:
@@ -43,7 +44,15 @@ def convert_result_to_context(questions):
             themes_dict[category] = [0, []]
 
         category_data = themes_dict.get(category)
-        category_data[0] = category_data[0] + 1 if i.get("right", False) else 0
+        category_data[0] += 1 if i.get("right", False) else 0
         category_data[1].append(i.get("right", False))
 
-    return answers_dict
+        penalty_points += 0 if i.get("right", False) else i.get("penalty_points", 0)
+
+    return {
+        'answers': answers_dict, 
+        'result': {
+                'penalty_points': penalty_points,
+                'result_text': 'NICHT BESTANDEN' if penalty_points >= 10 else 'BESTANDEN',
+            }
+        }
