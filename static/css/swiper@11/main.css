@@ -182,77 +182,66 @@ legend {
 /* stylelint-disable */
 @font-face {
   font-family: "VeryBerry";
-  src: url("../fonts/../fonts/VeryBerry.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Thin.woff2") format("woff2");
   font-weight: 100;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Light.woff2") format("woff2");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Medium.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-BlackItalic.woff2") format("woff2");
   font-weight: 900;
   font-display: swap;
   font-style: italic;
 }
 @font-face {
   font-family: "MazzardH";
-  src: url("../fonts/../fonts/MazzardH-Black.woff2") format("woff2");
   font-weight: 900;
   font-display: swap;
   font-style: normal;
@@ -1136,7 +1125,6 @@ button.btn--link::before {
   display: block;
   -webkit-transition: var(--tr);
   transition: var(--tr);
-  background: url("./../../../img/svg/up.svg") center/cover no-repeat;
 }
 .btn--link::after,
 a.btn--link::after,
@@ -1232,7 +1220,6 @@ button.btn--link::before {
   top: -14px;
   width: 30px;
   height: 30px;
-  background: no-repeat center/contain url("./../images/light-2.webp");
   -webkit-animation: flicker 4s ease infinite;
   animation: flicker 4s ease infinite;
 }
@@ -2070,7 +2057,6 @@ button.btn--link::before {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
-  background: url("./../img/svg/up.svg") center/cover no-repeat;
 }
 .nav-list-menu__parent-btn.active::after {
   -webkit-transform: rotate(90deg);
@@ -2104,10 +2090,8 @@ button.btn--link::before {
   display: block;
   width: 24px;
   height: 24px;
-  background: url("./../img/svg/menu.svg") center/cover no-repeat;
 }
 .svg-icon--menu.active {
-  background: url("./../img/svg/close.svg") center/cover no-repeat;
 }
 
 .top-info {
@@ -2463,7 +2447,6 @@ h6 span {
 .content-text a[href$=".pdf"] {
   padding-right: 38px;
   background-position: 0 0;
-  background: transparent url("./../../img/svg/pdf.svg") 100%/30px 30px no-repeat;
 }
 @media (hover: hover) {
   .content a[href$=".pdf"]:hover,
@@ -2483,7 +2466,6 @@ h6 span {
 .content-text a[href$=".rar"] {
   padding-right: 38px;
   background-position: 0 0;
-  background: transparent url("./../../img/svg/zip.svg") 100%/30px 30px no-repeat;
 }
 @media (hover: hover) {
   .content a[href$=".zip"]:hover,
@@ -2507,7 +2489,7 @@ h6 span {
 .content-text a[href$=".docx"] {
   padding-right: 38px;
   background-position: 0 0;
-  background: transparent url("./../../img/svg/doc.svg") 100%/30px 30px no-repeat;
+
 }
 @media (hover: hover) {
   .content a[href$=".doc"]:hover,
@@ -2572,7 +2554,7 @@ h6 span {
   left: -34px;
   width: 26px;
   height: 26px;
-  background: url("./../../img/svg/ok.svg") 0 0/contain no-repeat;
+
 }
 .content ol {
   list-style-type: none;
@@ -2629,7 +2611,7 @@ h6 span {
   left: 0;
   width: 10px;
   height: 10px;
-  background: url("./../../img/svg/rul.svg") 0 0/contain no-repeat;
+
 }
 .content-text ul:last-child,
 .content-text ol:last-child {
@@ -2898,11 +2880,11 @@ h6 span {
   padding-left: 40px;
 }
 .p-icon--address {
-  background: url("../img/decor/metka.svg") no-repeat left top -2px;
+
   background-size: 26px 26px;
 }
 .p-icon--phone {
-  background: url("../img/decor/phone.svg") no-repeat left top 4px;
+
   background-size: 20px 20px;
   font-size: clamp(18px, 20 / 1440 * 100vw, 20px);
   color: var(--primary-l);
@@ -2921,11 +2903,11 @@ h6 span {
   }
 }
 .p-icon--time {
-  background: url("../img/decor/filial_time.svg") no-repeat left top 2px;
+
   background-size: 22px 22px;
 }
 .p-icon--email {
-  background: url("../img/decor/email.svg") no-repeat left top;
+
   background-size: 24px 24px;
 }
 
@@ -2964,7 +2946,7 @@ h6 span {
   display: block;
   width: 46px;
   height: 36px;
-  background: url("./../../img/svg/arrow-right.svg") 0 0/contain no-repeat;
+
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -3734,7 +3716,7 @@ h6 span {
   transform: translate(-20%, 20%) rotate(50deg);
   height: 100%;
   aspect-ratio: 1;
-  background-image: url("./../img/decor/rul.svg");
+
   background-size: cover;
   z-index: 1;
 }
@@ -3841,7 +3823,7 @@ h6 span {
   position: relative;
   color: var(--white);
   background: var(--primary);
-  background-image: url("./../img/baners/baner-1.webp");
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -3862,7 +3844,7 @@ h6 span {
 }
 @media (max-width: 768px) {
   .lid-call {
-    background-image: url("./../img/baners/baner-2.webp");
+
   }
 }
 @media (max-width: 520px) {
@@ -4339,7 +4321,7 @@ h6 span {
   display: block;
   width: 50px;
   height: 50px;
-  background: url("../img/svg/bloq.svg") 0 0/cover no-repeat;
+
   opacity: 0.3;
 }
 .modal-content--rev .modal-content__review::before {
@@ -4685,7 +4667,7 @@ h6 span {
 }
 .card-price__right ul li {
   padding-left: 28px;
-  background: url("../img/decor/ok.svg") no-repeat left top;
+
   background-size: 22px 22px;
 }
 .card-price__right ul span {
@@ -4978,11 +4960,11 @@ h6 span {
   color: var(--white);
 }
 .content-block--online {
-  background: var(--primary) url("../img/decor/online-3.webp") bottom left/cover no-repeat;
+
 }
 @media (max-width: 1440px) {
   .content-block--online {
-    background: var(--primary) url("../img/decor/online-3-60.webp") bottom left/cover no-repeat;
+
   }
 }
 @media (max-width: 1080px) {
@@ -4992,15 +4974,15 @@ h6 span {
 }
 @media (max-width: 1080px) {
   .content-block--online .content-block__container {
-    background: var(--primary) url("../img/decor/online-3-60-s.webp") top center/cover no-repeat;
+
   }
 }
 .content-block--taxi-1 {
-  background: var(--primary) url("../img/decor/taxi-1-60.webp") bottom left/cover no-repeat;
+
 }
 @media (max-width: 1440px) {
   .content-block--taxi-1 {
-    background: var(--primary) url("../img/decor/taxi-1-60.webp") bottom left/cover no-repeat;
+
   }
 }
 @media (max-width: 1080px) {
@@ -5010,48 +4992,46 @@ h6 span {
 }
 @media (max-width: 1080px) {
   .content-block--taxi-1 .content-block__container {
-    background: var(--primary) url("../img/decor/taxi-1-60-s.webp") top center/cover no-repeat;
+
   }
 }
 .content-block--taxi-2 {
-  background: var(--primary) url("../img/decor/taxi-2.webp") bottom left/cover no-repeat;
+
 }
 @media (max-width: 1440px) {
   .content-block--taxi-2 {
-    background: var(--primary) url("../img/decor/taxi-2-60.webp") bottom left/cover no-repeat;
+
   }
 }
 @media (max-width: 1080px) {
   .content-block--taxi-2 {
     background: var(--primary);
-    background: var(--primary) url("../img/decor/taxi-2-60-s.webp") top center/cover no-repeat;
   }
 }
 .content-block--taxi-3 {
-  background: var(--primary) url("../img/decor/taxi-3.webp") bottom left/cover no-repeat;
 }
 @media (max-width: 1440px) {
   .content-block--taxi-3 {
-    background: var(--primary) url("../img/decor/taxi-3-60.webp") bottom left/cover no-repeat;
+
   }
 }
 @media (max-width: 1080px) {
   .content-block--taxi-3 {
     background: var(--primary);
-    background: var(--primary) url("../img/decor/taxi-3-60-s.webp") center right/cover no-repeat;
+
   }
 }
 .content-block--taxi-4 {
-  background: var(--primary) url("../img/decor/taxi-4.webp") bottom left/cover no-repeat;
+
 }
 @media (max-width: 1440px) {
   .content-block--taxi-4 {
-    background: var(--primary) url("../img/decor/taxi-4-60.webp") bottom left/cover no-repeat;
+
   }
 }
 @media (max-width: 1080px) {
   .content-block--taxi-4 {
-    background: var(--primary) url("../img/decor/taxi-4-60-s.webp") center/cover no-repeat;
+
   }
 }
 .content-block__summ {
@@ -5249,7 +5229,7 @@ h6 span {
 }
 @media (max-width: 1080px) {
   .content-block__grid {
-    background: var(--primary) url("../img/decor/online-3.webp") bottom center/cover no-repeat;
+
   }
 }
 
@@ -5434,7 +5414,7 @@ h6 span {
   width: 60px;
   height: 60px;
   display: block;
-  background: url("../img/svg/plus.svg") no-repeat left top;
+
   background-size: 60px 60px;
   left: 50%;
   top: 50%;
@@ -5533,7 +5513,7 @@ h6 span {
 .lb-dataContainer .lb-data .lb-close {
   width: 50px;
   height: 50px;
-  background: url(../../images/close.svg) top right/50px 50px no-repeat;
+
 }
 .lb-dataContainer .lb-closeContainer {
   padding-right: 30px;
@@ -5544,10 +5524,10 @@ h6 span {
 }
 
 .lb-nav a.lb-prev {
-  background: url(../../images/prev.png) left 48% no-repeat;
+
 }
 .lb-nav a.lb-next {
-  background: url(../../images/next.png) right 48% no-repeat;
+
 }
 
 .lb-data .lb-number {
@@ -6171,7 +6151,7 @@ h6 span {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../img/decor/gorod-1.webp") center/cover no-repeat;
+
   opacity: 0.1;
   z-index: 1;
 }
@@ -6206,7 +6186,6 @@ h6 span {
   width: 40px;
   height: 40px;
   display: block;
-  background: url("../img/svg/plus-p.svg") center/cover no-repeat;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 40px;
   flex: 0 0 40px;
@@ -6296,7 +6275,6 @@ h6 span {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../img/gallery/gallery-pervomayskaya/7.webp") center/cover no-repeat;
   -webkit-filter: opacity(50%);
   filter: opacity(50%);
   z-index: 1;
@@ -7101,7 +7079,6 @@ h6 span {
   right: 10px;
   width: 100%;
   max-width: 300px;
-  background: var(--primary-l1-b) url("./../img/svg/hand.svg") center right 16px/34px 34px no-repeat;
   border-radius: var(--br-b);
   font-size: 14px;
   padding: 8px 45px 8px 18px;
@@ -7177,7 +7154,6 @@ h6 span {
   transform: translate(-20%, 20%) rotate(50deg);
   height: 100%;
   aspect-ratio: 1;
-  background-image: url(./../img/decor/rul-l.svg);
   background-size: cover;
   z-index: 1;
 }
@@ -7295,27 +7271,21 @@ h6 span {
 }
 
 [data-js-review-agregator=yandex] {
-  background: var(--white) url("../img/svg/yandex.svg") top 10px right 10px/100px no-repeat;
 }
 
 [data-js-review-agregator="2gis"] {
-  background: var(--white) url("../img/svg/2gis.svg") top 10px right 10px/100px no-repeat;
 }
 
 [data-js-review-agregator=zoon] {
-  background: var(--white) url("../img/svg/zoon.svg") top 10px right 10px/100px no-repeat;
 }
 
 [data-js-review-agregator-modal=yandex] {
-  background: var(--white) url("../img/svg/yandex.svg") center left/100px no-repeat;
 }
 
 [data-js-review-agregator-modal="2gis"] {
-  background: var(--white) url("../img/svg/2gis.svg") center left/100px no-repeat;
 }
 
 [data-js-review-agregator-modal=zoon] {
-  background: var(--white) url("../img/svg/zoon.svg") center left/100px no-repeat;
 }
 
 [data-summ] {
@@ -7347,4 +7317,3 @@ h6 span {
   font-size: clamp(24px, 30 / 1440 * 100vw, 30px);
   left: calc(100% + 6px);
 }
-/*# sourceMappingURL=main.css.map */

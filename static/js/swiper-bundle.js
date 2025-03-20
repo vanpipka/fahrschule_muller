@@ -6175,4 +6175,4 @@ var Swiper = function() {
     return Q.use(ce),
     Q
 }();
-//# sourceMappingURL=swiper-bundle.min.js.map
+
