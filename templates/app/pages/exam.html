@@ -9,9 +9,9 @@
 <div class="headerBar" id = "headerBar">
   <table class="headerBar">
     <tr>
-      <td>Базовый материал</td>
-      <td class="center">Max Mustermann - место 01</td>
-      <td class="right">Баллы: ...</td>
+      <td>Grundstoff</td>
+      <td class="center">Max Mustermann</td>
+      <td class="right">Punkte: ...</td>
     </tr>
   </table>
 </div>
@@ -50,14 +50,14 @@
 <div class="navigationView" id="navigationView">
   <div class="sheetTabContainer">
     <div class="navigationButtonContainer">
-      <button class="finishButton" id="finishButton" onclick="checkResult()">Сдать</button>
-      <button class="nextButton" id ="nextButton">Дальше</button>
+      <button class="finishButton" id="finishButton" onclick="checkResult()">Abgabe</button>
+      <button class="nextButton" id ="nextButton">Weiter</button>
     </div>
   </div>
   <div class="sheetTasksContainer">
     <div class="taskButtonContainer" style="display: block;">
       {% for question in dataset %}
-        <div class="taskButton {% if forloop.counter == 1 %} activeTask {% endif %}" id="question_{{ forloop.counter }}">{{ forloop.counter }}</div>
+        <div class="taskButton {% if forloop.counter == 1 %} activeTask {% endif %}" id="question_{{ forloop.counter }}" questionId="{{question.id}}">{{ forloop.counter }}</div>
       {% endfor %}
     </div>
   </div>
@@ -110,8 +110,13 @@
       
     for (let i = 0; i < pageLinks.length; i++) {
       let classList = pageLinks[i].classList;
-      if (pageLinks[i].id === 'question_'+ pageNumber) { classList.add('activeTask'); } 
-      else { classList.remove('activeTask'); }
+      classList.remove('activeTask');
+      if (pageLinks[i].id === 'question_'+ pageNumber) { classList.add('activeTask'); }
+      
+      let answer = ANSWERS_MAP.get(pageLinks[i].getAttribute('questionId'));
+      
+      if (!answer) { classList.remove('hasAnswer');  }
+      else if (answer.length > 0) { classList.add('hasAnswer'); } 
     }
   }
 

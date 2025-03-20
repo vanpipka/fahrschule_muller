@@ -1,6 +1,7 @@
 import uuid
 from services.db_manager import get_questions
 
+
 def get_questions_by_category(type_id):
 
     question_dtos = []
@@ -46,4 +47,3 @@ def convert_result_to_context(questions):
         category_data[1].append(i.get("right", False))
 
     return answers_dict
-    

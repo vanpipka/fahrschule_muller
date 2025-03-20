@@ -23,8 +23,18 @@ class Message(models.Model):
 class Review(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.CharField(max_length=200)
+    type = models.CharField(max_length=200, blank=True)
     url = models.CharField(max_length=600)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
+
+    def __save__(self):
+        
+        if "google" in self.url:
+            self.type = "google"
+        elif "clickclick" in self.url:
+            self.type = "clickclick"
+        else:
+            self.type = ""
     
-    
+        print(self.type)

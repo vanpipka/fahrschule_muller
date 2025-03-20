@@ -14,10 +14,11 @@
             <div class="swiper reviews-slider" data-js-reviews>
                 <div class="swiper-wrapper reviews-slider__wrapper">
 
+                    {% for i in reviews %}
                     <div class="swiper-slide review" data-js-review>
                         <div class="review__wrapper">
 
-                            <a href="https://www.clickclickdrive.de/school/fahrschule-svs-mueller" class="review__agregator review__agregator--clickclick" data-js-review-agregator="clickclick" target="_blank"></a>
+                            <a href="{{i.url}}" class="review__agregator review__agregator--clickclick" data-js-review-agregator="clickclick" target="_blank"></a>
 
                             <div class="review__content">
 
@@ -25,8 +26,8 @@
                                         aria-label="Alexandra h.">Weiterlesen</button>
 
                                 <div class="review__header">
-                                    <h3 class="title-5" data-js-review-name>Alexandra h.</h3>
-                                    <div class="review__date" data-js-review-date>July 19, 2023</div>
+                                    <h3 class="title-5" data-js-review-name>{{i.author}}</h3>
+                                    <div class="review__date" data-js-review-date>{{i.created_date}}</div>
                                 </div>
 
                                 <div class="review__footer">
@@ -34,7 +35,7 @@
                                         <svg style="width: 80px; height: 80px;">
                                             <use xlink:href="./img/sprite.svg#bloq"></use>
                                         </svg>
-                                        <p class="truncate" data-js-review-text>Super Fahrlehrer, kann ich nur weiter empfehlen!!</p>
+                                        <p class="truncate" data-js-review-text>{{i.text}}</p>
                                     </div>
                                 </div>
 
@@ -42,7 +43,9 @@
 
                         </div>
                     </div>
-
+                    {% endfor %}
+                    
+                    
                     <div class="swiper-slide review" data-js-review>
                         <div class="review__wrapper">
 

@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from services import db_manager
 
 def home(request):
-    return render(request, 'app/pages/index.html')
+    
+    reviews = db_manager.get_reviews(20)
+    return render(request, 'app/pages/index.html', context={'reviews': reviews})
 
 
 def team(request):

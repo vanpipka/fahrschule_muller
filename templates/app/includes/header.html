@@ -4,7 +4,7 @@
         <div class="header__row">
             <div class="header__logo" style="height: auto;">
                 <a href="/" class="logo">
-                    <img src="/static/img/logo/logo.png" alt="Fahrschule SVS Muller" width="180" height="41">
+                    <img src="/static/img/logo/logo_1.png" alt="Fahrschule SVS Muller" width="180" height="41">
                 </a>
             </div>
 
@@ -55,13 +55,21 @@
                                 <li><a href="https://fahrschule-svs-mueller.de/haftungsausschluss/">Haftungsausschluss</a></li>
                             </ul>
                         </li>
+                        <li class="nav-list-menu__parent nav-list-menu__parent--one">
+                            <button type="button" class="nav-list-menu__parent-btn" data-js-menu-list="">Prufung</button>
+                            <ul>
+                                {% for i in exam_items %}
+                                <li><a href="/exam/?type_id={{i.id}}">Classe {{i.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </nav>
 
             <div class="header__btns">
 
-                <div class="header__phone header-phone" data-js-header-hover="">
+                <div class="d-none d-md-block header__phone header-phone" data-js-header-hover="">
 
                     <div class="header-phone__info phone-info" data-js-header-info="">
                         <ul class="phone-info__list">
@@ -139,7 +147,6 @@
 <div class="mobile-nav" data-js-mobile-wrapper="">
     <nav class="mobile-nav__menu" data-js-mobile-nav="">
         <ul class="nav-list-menu">
-            <li><a href="/" class="active">Startseite</a></li>
             <li class="nav-list-menu__parent nav-list-menu__parent--one">
                 <button type="button" class="nav-list-menu__parent-btn" data-js-menu-list="">Fahrschule</button>
                 <ul>
