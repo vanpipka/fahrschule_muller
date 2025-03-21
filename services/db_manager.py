@@ -11,12 +11,14 @@ def check_and_save_message(message_data):
     message.save()
     
     
-def get_questions(type_id = ""):
+def get_questions_by_theme(theme_id = "", count = 20):
 
     query_set = exam_models.Question.objects
                  
-    if type_id:
-        query_set = query_set.select_related("type").filter(type_id=type_id) 
+    if theme_id:
+        query_set = query_set.select_related("thema").filter(thema_id=theme_id)
+
+    query_set = query_set.all()[:count]
         
     return list(query_set)
 
@@ -27,7 +29,7 @@ def get_reviews(count = 20):
     return list(query_set)
 
 
-def get_exams(count = 10):
+def get_themes(count = 10):
 
-    query_set = exam_models.Type.objects.all()[:count]
+    query_set = exam_models.Thema.objects.all()[:count]
     return list(query_set)

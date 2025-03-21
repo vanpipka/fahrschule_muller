@@ -1,14 +1,20 @@
 import uuid
-from services.db_manager import get_questions
+from services.db_manager import get_questions_by_theme
+import services.const as const
 
 
-def get_questions_by_category(type_id):
+def get_questions_by_category(theme_id):
 
+    # first - get grundstoff questions
     question_dtos = []
-    entities = get_questions(type_id)
     
+    entities = get_questions_by_theme(const.GRUND_STOFF_ID, 20)   
     for question in entities:
         question_dtos.append(question.to_question_dto())
+
+    entities = get_questions_by_theme(theme_id, 10)
+    for question in entities:
+        question_dtos.append(question.to_question_dto())    
     
     return question_dtos
 
