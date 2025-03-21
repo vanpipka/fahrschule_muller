@@ -6,9 +6,11 @@ from django.utils import timezone
 class Message(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.CharField(max_length=200)
-    form_name = models.CharField(max_length=200)
-    text = models.TextField()
+    author = models.CharField(max_length=200, default="")
+    form_name = models.CharField(max_length=200, default="")
+    phone_number = models.CharField(max_length=200, default="")
+    url = models.CharField(max_length=500, default="")
+    text = models.TextField(default="")
     created_date = models.DateTimeField(default=timezone.now)
     date_of_sending_to_admin = models.DateTimeField(blank=True, null=True)
 

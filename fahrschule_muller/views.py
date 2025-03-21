@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponse
+import json
+from django.shortcuts import render
 from services import db_manager
 
 
@@ -66,13 +68,20 @@ def datenschutz(request):
 
 def anfrage(request):
     if request.method == "POST":
-               
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        form_name = request.POST.get("form_name")
+
+        try:
+            request_body = json.loads(request.body)
+        except json.JSONDecodeError:
+            return HttpResponse(status=400)
         
-        db_manager.check_and_save_message({'name': name, 'phone': phone, 'form_name': form_name})
+        print(request_body)
+        db_manager.check_and_save_message({
+            'name': request_body.get("name", ""),
+            'phone': request_body.get("phone", ""),
+            'url': request_body.get("url", ""), 
+            'form_name': request_body.get("form", "")     
+        })
 
-        return redirect("success_page")
+        return JsonResponse({"redirect_url": "anfrage/"})
 
-    return redirect("home")
+    return render(request, 'app/pages/success.html')

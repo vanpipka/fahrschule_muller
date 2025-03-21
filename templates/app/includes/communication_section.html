@@ -3,7 +3,11 @@
         <div class="installment-form mt40">
             <div class="form-block">
 
-                <form action="/anfrage/" method="POST" class="form" data-js-form="">
+                <form action="#" class="form" data-js-form="">
+                    <div class="form__inputs-hidden">
+                        <input type="text" name="formName" hidden="" value="erste_hilfe">
+                        <input type="url" name="url" hidden="" value="https://fahrschule-svs-mueller.de/">
+                    </div>
                     {% csrf_token %}
                     <div class="form__inputs form__inputs--section form__inputs--white">
                         <input class="input" type="text" hidden name="form_name" value="erste_hilfe" data-js-input="">

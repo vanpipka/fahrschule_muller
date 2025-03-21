@@ -4,12 +4,15 @@ from exam import models as exam_models
 
 def check_and_save_message(message_data):
 
-    message = app_models.Message()
-    message.text = message_data.get('phone', '')
-    message.author = message_data.get('name', '')
-    message.form_name = message_data.get('form_name', '')
+    message = app_models.Message(
+        text = message_data.get('text', ''),
+        author = message_data.get('name', ''),
+        form_name = message_data.get('form_name', ''),
+        phone_number = message_data.get('phone', ''),
+        url = message_data.get('url', '')
+    )
     message.save()
-    
+
     
 def get_random_questions_by_theme(theme_id = "", count = 20):
 

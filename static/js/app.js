@@ -261,7 +261,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   // Маска для номера телефона
   mask('phone', {
-    mask: '+{7}(#00) 000-00-00',
+    mask: [
+      '+{49} (000) 000-00-00',
+      '+{49} (000) 000-0000',
+      '+{49} (000) 0000000',
+      '+{49} (000) 000000',
+      '+{49} (000) 00000',
+      '+{49} (000) 0000'  
+    ],
     definitions: {
       '#': /[49]/
     },
@@ -330,11 +337,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Поднимаем LABEL в блоке с input
       const inputsForm = form.querySelectorAll('[data-js-input]');
       inputsForm.forEach(function (input) {
-        // console.log(input);
+        console.log(input);
         const input_elmnt = input.closest('.input-container.input-container--inner')
            
         if (input_elmnt) {
-          const labe = input_elmnt.querySelector('.label');
+          const label = input_elmnt.querySelector('.label');
 
           input.addEventListener('focus', function () {
             label.classList.add('label--active');
@@ -394,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // ================= Выпадающий список =================
 
       // ================= Валидация и отправка формы =================
-      /*
+      
       form.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -418,32 +425,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Проверка имени
         if (inputNameValue.length === 0) {
-          displayError(inputName, 'Поле не должно быть пустым');
+          displayError(inputName, 'Das Feld darf nicht leer sein');
         } else if (!/^[\sА-Яа-яA-Za-z'-]{2,20}$/.test(inputNameValue)) {
-          displayError(inputName, 'Недопустимый формат имени');
+          displayError(inputName, 'Ungültiges Format');
         } else {
           removeError(inputName);
         }
 
         // Проверка телефона
         if (inputPhoneValue.length === 0) {
-          displayError(inputPhone, 'Поле не должно быть пустым');
-        } else if (!/^\+7\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/.test(inputPhoneValue)) {
-          displayError(inputPhone, 'Недопустимый формат телефона');
+          displayError(inputPhone, 'Das Feld darf nicht leer sein');
+        //} else if (!/^\+7\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/.test(inputPhoneValue)) {
+        //  displayError(inputPhone, 'Ungültiges Format');
         } else {
           removeError(inputPhone);
         }
 
-        // Проверка поля "Филиал", если оно существует
-        if (inputFill && inputFillValue.length === 0) {
-          displayError(inputFill, 'Выберите филиал автошколы');
-        } else if (inputFill) {
-          removeError(inputFill);
-        }
-
         // Проверка поля "Способ связи", если оно существует
         if (inputSocial && inputSocialValue.length === 0) {
-          displayError(inputSocial, 'Выберите способ связи');
+          displayError(inputSocial, 'Wählen Sie eine Verbindungsmethode aus');
         } else if (inputSocial) {
           removeError(inputSocial);
         }
@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
             message += `<b>Филиал:</b> ${inputFillValue}\n`;
           }
           
-          message += `<b>Страница сайта:</b> ${inputUrlValue}\n`;
+          message += `<b>Страница сайта:</b> ${window.location.href}\n`;
 
           // Добавляем поле способа связи, если оно есть и заполнено
           
@@ -478,19 +478,36 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           
           message += `\n\n<i>Уважамые администраторы, пожалуйста, отвечайте на заявку как можно скорее! Не забываете ставить реакцию на данное сообщение, например: ЗАПИСЬ❤️, КОНКУРЕНТ👎, ПЕРЕЗВОНИТЬ🤞, НЕДОЗВОН🤔</i>`;
-          
-          
+        
           // Отправка данных в Telegram
           sendTelegramMessage(message);
         }
 
         // Функция отправки сообщения в Telegram
         function sendTelegramMessage(message) {
-          const TOKEN = "";
-          const CHAT_ID = "";
-          const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=HTML`;
 
-          fetch(url)
+          fetch("/anfrage/", {
+            method: "POST",
+            body: JSON.stringify({url: window.location.href, name: inputNameValue, form: inputNameFormValue, phone: inputPhoneValue}),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              "X-CSRFToken": document.getElementsByName('csrfmiddlewaretoken')[0].value
+            }
+          })
+              .then(response => response.json())
+              .then(data => {
+                window.location.href = data.redirect_url; // Выполняем редирект
+              })
+              .catch(error => {
+                console.error(error);
+              })
+              .finally(() => {
+                  submitButton.disabled = false;
+              });
+          
+          return;
+          
+          fetch('/anfrage')
             .then(response => {
               if (!response.ok) {
                 console.log('Ошибка отправки сообщения в Telegram');
@@ -509,8 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
       });
-    
-      */
+
     }
   }
 

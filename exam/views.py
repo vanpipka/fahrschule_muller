@@ -12,8 +12,8 @@ def class_b(request):
         try:
             answers = json.loads(request.body).get("answers")
         except json.JSONDecodeError:
-            return JsonResponse({"status": "error", "message": "Invalid JSON"}, status=400)
-        
+            return HttpResponse(status=400)
+
         questions = exam_manager.get_questions_by_ids([x[0] for x in answers])
         request.session['json_data'] = json.dumps(exam_manager.check_exam_answers(questions, answers), default=str)
         return JsonResponse({"redirect_url": "results/"})
