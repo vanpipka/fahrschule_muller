@@ -1,22 +1,29 @@
 import uuid
-from services.db_manager import get_questions_by_theme
+import services.db_manager as db_manager
 import services.const as const
 
 
-def get_questions_by_category(theme_id):
+def get_random_questions(theme_id):
 
     # first - get grundstoff questions
     question_dtos = []
     
-    entities = get_questions_by_theme(const.GRUND_STOFF_ID, 20)   
+    entities = db_manager.get_random_questions_by_theme(const.GRUND_STOFF_ID, 20)   
     for question in entities:
         question_dtos.append(question.to_question_dto())
 
-    entities = get_questions_by_theme(theme_id, 10)
+    entities = db_manager.get_random_questions_by_theme(theme_id, 10)
     for question in entities:
         question_dtos.append(question.to_question_dto())    
     
     return question_dtos
+
+
+def get_questions_by_ids(ids = None):
+
+    if ids is None: ids = []
+
+    return [question.to_question_dto() for question in db_manager.get_questions_by_ids(ids)]
 
 
 # [['cf6867ec-cfa4-4367-91e0-f7864d15a3fc', [1, 2]]]

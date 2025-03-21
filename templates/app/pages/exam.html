@@ -85,9 +85,11 @@
 
     let pageLinks = document.querySelectorAll("div .taskButton");
     pageLinks.forEach(link => { link.addEventListener("click", (a) => changeQuestion(a.target)); });
-
+    pageLinks.forEach(link => { ANSWERS_MAP.set(link.getAttribute('questionId'), []) });
+    
     let answersCbx = document.querySelectorAll("div .cbx_cont_cbx");
     answersCbx.forEach(cbx => { cbx.addEventListener("click", (a) => setAnswer(cbx)); });
+    
   });
 
   function nextButtonClick(button) { changeQuestion(getNextPageLink()) }
@@ -156,10 +158,10 @@
         "X-CSRFToken": document.getElementsByName('csrfmiddlewaretoken')[0].value
       }
     })
-            .then(response => response.json())
-            .then(data => {
-              window.location.href = data.redirect_url; // Выполняем редирект
-            });
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = data.redirect_url; // Выполняем редирект
+      });
   }
   
 </script>

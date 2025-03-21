@@ -11,15 +11,23 @@ def check_and_save_message(message_data):
     message.save()
     
     
-def get_questions_by_theme(theme_id = "", count = 20):
+def get_random_questions_by_theme(theme_id = "", count = 20):
 
     query_set = exam_models.Question.objects
                  
     if theme_id:
         query_set = query_set.select_related("thema").filter(thema_id=theme_id)
 
-    query_set = query_set.all()[:count]
+    query_set = query_set.order_by('?')[:count]
         
+    return list(query_set)
+
+
+def get_questions_by_ids(ids = None):
+    
+    if ids is None: ids = []
+        
+    query_set = exam_models.Question.objects.filter(id__in=ids)
     return list(query_set)
 
 

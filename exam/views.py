@@ -1,7 +1,7 @@
 import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from services.exam_manager import get_questions_by_category, check_exam_answers, convert_result_to_context
+import services.exam_manager as exam_manager
 
 
 def class_b(request):
@@ -13,13 +13,13 @@ def class_b(request):
             answers = json.loads(request.body).get("answers")
         except json.JSONDecodeError:
             return JsonResponse({"status": "error", "message": "Invalid JSON"}, status=400)
-
-        questions = get_questions_by_category(exam_id)
-        request.session['json_data'] = json.dumps(check_exam_answers(questions, answers), default=str)
+        
+        questions = exam_manager.get_questions_by_ids([x[0] for x in answers])
+        request.session['json_data'] = json.dumps(exam_manager.check_exam_answers(questions, answers), default=str)
         return JsonResponse({"redirect_url": "results/"})
     
     else:
-        dataset = get_questions_by_category(exam_id)   
+        dataset = exam_manager.get_random_questions(exam_id)   
         
         if len(dataset) == 0:
             redirect("500") 
@@ -37,8 +37,6 @@ def exam_result(request):
     except json.JSONDecodeError:
         render(request, 'app/pages/500.html')
      
-    data = convert_result_to_context(questions)
-    
-    print(data)
+    data = exam_manager.convert_result_to_context(questions)
      
     return render(request, 'app/pages/exam_result.html', context={'dataset': data})
