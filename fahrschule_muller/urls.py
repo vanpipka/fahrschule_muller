@@ -20,6 +20,11 @@ from fahrschule_muller import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+handler404 = views.custom_404
+handler500 = views.custom_500
+handler403 = views.custom_403
+handler400 = views.custom_400
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('team/', views.team, name='team'),

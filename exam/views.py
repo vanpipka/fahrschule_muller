@@ -1,5 +1,5 @@
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse 
 from django.shortcuts import render, redirect
 import services.exam_manager as exam_manager
 
@@ -22,7 +22,7 @@ def class_b(request):
         dataset = exam_manager.get_random_questions(exam_id)   
         
         if len(dataset) == 0:
-            redirect("500") 
+            return HttpResponse(status=400) 
             
         return render(request, 'app/pages/exam.html', context={'dataset': dataset})
 
@@ -35,7 +35,7 @@ def exam_result(request):
     try:
         questions = json.loads(json_data)
     except json.JSONDecodeError:
-        render(request, 'app/pages/500.html')
+        redirect('500')
      
     data = exam_manager.convert_result_to_context(questions)
      

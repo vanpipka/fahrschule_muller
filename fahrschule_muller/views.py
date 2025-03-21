@@ -1,6 +1,23 @@
 from django.shortcuts import render, redirect
 from services import db_manager
 
+
+def custom_404(request, exception):
+    return render(request, "app/404.html", status=404)
+
+
+def custom_500(request):
+    return render(request, "app/500.html", status=500)
+
+
+def custom_403(request, exception):
+    return render(request, "app/403.html", status=403)
+
+
+def custom_400(request, exception):
+    return render(request, "app/400.html", status=400)
+
+
 def home(request):
     
     reviews = db_manager.get_reviews(20)
