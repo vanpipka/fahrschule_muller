@@ -1,6 +1,6 @@
 from django.http import JsonResponse, HttpResponse
-import json
 from django.shortcuts import render
+import json
 from services import db_manager
 
 
