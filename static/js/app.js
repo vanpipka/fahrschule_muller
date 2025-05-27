@@ -709,7 +709,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       },
       keyboard: {
-        enabled: true,
+        enabled: false,
         onlyInViewport: true,
         pageUpDown: true,
       }
@@ -730,7 +730,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clickable: true,
       },
       keyboard: {
-        enabled: true,
+        enabled: false,
         onlyInViewport: true,
         pageUpDown: true,
       },

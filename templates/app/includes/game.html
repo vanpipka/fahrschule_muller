@@ -1,0 +1,305 @@
+
+<div id="startScreen" style="border-radius: 1.11rem;">
+    Simple Racing Game
+    <button id="startButton">Start game</button>
+</div>
+
+<canvas 
+    id="gameCanvas" 
+    height="600"
+    width="400"
+    style="display: block; margin: 0 auto; background: #1eaa66;">
+</canvas>
+
+<!--width: 80%; height: 100%; -->
+
+<script>
+     
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const startScreen = document.getElementById('startScreen');
+    const startButton = document.getElementById('startButton');
+
+    const roadWidth = 200;
+    const playerWidth = 50;
+    const playerHeight = 70;
+    let playerX = canvas.width / 2 - playerWidth / 2;
+    const playerY = canvas.height - playerHeight - 50;
+    let speed = 5;
+
+    let keys = {};
+
+    const playerImage = new Image();
+    playerImage.src = '/static/img/game/auto.png'; // Картинка машинки игрока
+
+    const leftHouseImages = [
+        '/static/img/game/house_l1.png',
+        '/static/img/game/house_l2.png'
+    ];
+
+    const rightHouseImages = [
+        '/static/img/game/house_r1.png',
+        '/static/img/game/house_r2.png'
+    ];
+
+    const enemyCarImagesSrc = [
+        '/static/img/game/auto_1.png',
+        '/static/img/game/auto_2.png',
+        '/static/img/game/auto_3.png',
+        '/static/img/game/auto_4.png',
+        '/static/img/game/auto_5.png'
+    ];
+
+    const enemyCarImages = enemyCarImagesSrc.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+    });
+
+    const loadedLeftHouses = leftHouseImages.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+    });
+
+    const loadedRightHouses = rightHouseImages.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+    });
+
+    const obstacles = [];
+    const obstacleWidth = 50;
+    const obstacleHeight = 50;
+    const obstacleSpeed = 3;
+
+    const sideObjects = [];
+    const sideObjectWidth = 10;
+    const sideObjectHeight = 30;
+    const sideObjectSpeed = 3;
+
+    let gameRunning = false;
+
+    function drawPlayer() {
+                
+        if (playerImage.complete) {
+            ctx.drawImage(playerImage, playerX, playerY, playerWidth, playerHeight);
+
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(playerX, playerY, playerWidth, playerHeight);
+
+        } else {
+            ctx.fillStyle = 'lime';
+            ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+        }
+    }
+
+    function drawObstacle(obstacle) {
+        if (obstacle.img && obstacle.img.complete) {
+            
+            ctx.drawImage(obstacle.img, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+
+            // Рамка вокруг препятствия
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(obstacle.x, obstacle.y, obstacleWidth, obstacle.height);
+        } else {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(obstacle.x, obstacle.y, obstacleWidth, obstacleHeight);
+
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(obstacle.x, obstacle.y, obstacleWidth, obstacleHeight);
+        }
+    }
+
+    function drawSideObject(obj) {
+        if (obj.img.complete) {
+            ctx.drawImage(obj.img, obj.x, obj.y, 50, 50);
+        } else {
+            obj.img.onload = () => {
+                ctx.drawImage(obj.img, obj.x, obj.y,50, 50);
+            }
+        }
+    }
+
+    function createObstacle() {
+
+        const x = Math.random() < 0.5 ? 130 : 230;
+        const img = enemyCarImages[Math.floor(Math.random() * enemyCarImages.length)];
+
+        const aspectRatio = img.width / img.height;
+        const height = obstacleWidth / aspectRatio;
+
+        obstacles.push({ x, y: -50, img: img, width: obstacleWidth, height: height });
+
+    }
+
+    function createSideObject() {
+        const leftX = canvas.width/2 - roadWidth/2 - 40;
+        const rightX = canvas.width/2 + roadWidth/2 + 10;
+
+        const leftHouse = loadedLeftHouses[Math.floor(Math.random() * loadedLeftHouses.length)];
+        const rightHouse = loadedRightHouses[Math.floor(Math.random() * loadedRightHouses.length)];
+
+        sideObjects.push({ x: leftX, y: -30, img: leftHouse });
+        sideObjects.push({ x: rightX, y: -30, img: rightHouse });
+    }
+
+    function updateObstacles() {
+        for (let obs of obstacles) {
+            obs.y += obstacleSpeed;
+        }
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            if (obstacles[i].y > canvas.height) {
+                obstacles.splice(i, 1);
+            }
+        }
+    }
+
+    function updateSideObjects() {
+        for (let obj of sideObjects) {
+            obj.y += sideObjectSpeed;
+        }
+        for (let i = sideObjects.length - 1; i >= 0; i--) {
+            if (sideObjects[i].y > canvas.height) {
+                sideObjects.splice(i, 1);
+            }
+        }
+    }
+
+    function checkCollision() {
+        for (let obs of obstacles) {
+            
+            console.log(playerX < obs.x + obs.width);
+
+            if (playerX < obs.x + obstacleWidth &&
+                playerX + playerWidth > obs.x &&
+                playerY < obs.y + obs.height &&
+                playerY + playerHeight > obs.y) {
+                gameOver();
+            }
+        }
+    }
+
+    function drawMiddleLine(offset) {
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([20, 15]);
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, offset % 35 - 35);
+        ctx.lineTo(canvas.width / 2, canvas.height);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    let middleLineOffset = 0;
+
+    function gameOver() {
+        // return;
+        gameRunning = false;
+        cancelAnimationFrame(animationId);
+        keys = {}; // Сброс управления
+        startScreen.innerHTML = 'Game Over!<br><button id="startButton">Restart</button>';
+        startScreen.style.display = 'flex';
+        document.getElementById('startButton').addEventListener('click', startGame);
+    }
+
+    function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(canvas.width/2 - roadWidth/2, 0, roadWidth, canvas.height);
+
+        middleLineOffset += obstacleSpeed;
+        drawMiddleLine(middleLineOffset);
+
+        if (keys['ArrowLeft'] && playerX > canvas.width/2 - roadWidth/2) {
+            playerX -= speed;
+        }
+        if (keys['ArrowRight'] && playerX < canvas.width/2 + roadWidth/2 - playerWidth) {
+            playerX += speed;
+        }
+
+        drawPlayer();
+
+        updateObstacles();
+        for (let obs of obstacles) {
+            drawObstacle(obs);
+        }
+
+        updateSideObjects();
+        for (let obj of sideObjects) {
+            drawSideObject(obj);
+        }
+
+        checkCollision();
+    }
+
+    setInterval(() => {
+        if (gameRunning) {
+            createObstacle();
+            createSideObject();
+        }
+    }, 1500);
+
+    let animationId;
+    function gameLoop() {
+        if (gameRunning) {
+            update();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+    }
+
+    function keyDownHandler(e) {
+        keys[e.key] = true;
+    }
+
+    function keyUpHandler(e) {
+        keys[e.key] = false;
+    }
+
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
+
+    function startGame() {
+        startScreen.style.display = 'none';
+        startScreen.innerHTML = 'Simple Racing Game<br><button id="startButton">Start</button>';
+        obstacles.length = 0;
+        sideObjects.length = 0;
+        gameRunning = true;
+        requestAnimationFrame(gameLoop);
+    }
+
+    startButton.addEventListener('click', startGame);
+
+</script>
+
+
+<style>
+    body { margin: 0; overflow: hidden; background: #111; }
+    canvas { display: block; margin: 0 auto; background: #333; }
+    #startScreen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        font-size: 48px;
+        font-family: Arial, sans-serif;
+        z-index: 10;
+    }
+    #startButton {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+</style>
