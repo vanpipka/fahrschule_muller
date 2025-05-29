@@ -70,7 +70,7 @@ def ausbildung(request):
 
 
 def stelle(request):
-    return render(request, 'app/pages/datenschutz.html')
+    return render(request, 'app/pages/stelle.html')
 
 
 def products(request):

@@ -1,0 +1,114 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<div class="content-block content-block__container content-block--taxi-3">
+  <div class="pt80 pb40">
+  </div>
+  <div class="content-block__body pb80">
+
+    <div class="content-block__title">
+      <h1 class="title-1">Werde Fahrlehrer bei „<span>SVS-Müller</span>“</h1>
+      <h2 class="title-3">Starte in eine neue Karriere – in einem Team, das Menschen wirklich schätzt!</h2>
+      <div class="title-sub">Suchen Sie einen krisensicheren Beruf mit gesellschaftlicher Relevanz?</div>
+    </div>
+    <div class="content-block__text">
+      <p>Du liebst Autos, gehst selbstbewusst mit Verantwortung um und hast Freude im Umgang mit Menschen?</p>
+      <p>Dann bist du bei uns genau richtig! SVS-Müller sucht motivierte Fahrlehrer (m/w/d), die in einem respektvollen und kollegialen Umfeld arbeiten möchten.</p>
+    </div>
+
+    <p>Das erwartet dich bei uns:</p>
+
+    <div class="content-block__list content-block__list--two">
+      <ul>
+        <li>
+          <div class="content-block__list-icon">
+            🕒 
+          </div>
+
+          <div class="content-block__list-title">Flexible Planung deiner Fahrstunden – du bestimmst den Rhythmus </div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            🚘
+          </div>
+
+          <div class="content-block__list-title">Start und Ende der Fahrstunden direkt an unseren Standorten</div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            💡
+          </div>
+
+          <div class="content-block__list-title"> Raum für deine Ideen und aktive Mitgestaltung</div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            🎉
+          </div>
+
+          <div class="content-block__list-title"> Gemeinsame Aktivitäten und echtes Teamgefühl</div>
+        </li>
+        
+      </ul>
+    </div>
+
+    <p>Was du mitbringen solltest:</p>
+
+    <div class="content-block__list content-block__list--two">
+      <ul>
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Gültige Fahrlehrererlaubnis für Klasse B/BE </div>
+        </li>
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Leidenschaft für das Lehren und Freude daran, Menschen sicher zum Führerschein zu begleiten</div>
+        </li>
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Ein positives Auftreten und Offenheit für neue Impulse </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-block__btn">
+      <p>SVS-Müller – ein Arbeitsplatz, an dem du dich wohlfühlst!  </p>
+
+      <button 
+        type="button" 
+        class="btn btn--big btn--red" 
+        data-js-modal-target="modal-call" 
+        aria-label="Werde Fahrlehrer bei SVS-Müller"
+        data-js-desc="Hinterlassen Sie eine Anfrage, wir werden Sie innerhalb von 15 Minuten zurückrufen und detailliert über die Möglichkeiten sprechen, ein Fahrlehrer zu werden." 
+        data-js-title="Werde Fahrlehrer bei SVS-Müller">
+          Jetzt bewerben
+      </button>
+    </div>
+
+  </div>
+</div>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}
