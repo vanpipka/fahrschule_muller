@@ -5,16 +5,17 @@ from exam import models as exam_models
 def check_and_save_message(message_data):
 
     message = app_models.Message(
-        text = message_data.get('text', ''),
+        text = message_data.get('message', ''),
         author = message_data.get('name', ''),
         form_name = message_data.get('form_name', ''),
         phone_number = message_data.get('phone', ''),
-        url = message_data.get('url', '')
+        url = message_data.get('url', ''),
+        connection_type = message_data.get('connection_type', ''),
     )
     message.save()
 
     
-def get_random_questions_by_theme(theme_id = "", count = 20):
+def get_random_questions_by_theme(theme_id: str = "", count: int = 20) -> list[exam_models.Question]:
 
     query_set = exam_models.Question.objects
                  
@@ -26,7 +27,7 @@ def get_random_questions_by_theme(theme_id = "", count = 20):
     return list(query_set)
 
 
-def get_questions_by_ids(ids = None):
+def get_questions_by_ids(ids: list[str] = None) -> list[exam_models.Question]:
     
     if ids is None: ids = []
         
@@ -34,13 +35,24 @@ def get_questions_by_ids(ids = None):
     return list(query_set)
 
 
-def get_reviews(count = 20):
+def get_reviews(count: int = 20) -> list[app_models.Review]:
 
     query_set = app_models.Review.objects.all()[:count]
     return list(query_set)
 
 
-def get_themes(count = 10):
+def get_themes(count: int = 10) -> list[exam_models.Thema]:
 
     query_set = exam_models.Thema.objects.all()[:count]
     return list(query_set)
+
+
+def get_products(count: int = 10) -> list[app_models.OrderItem]:
+
+    query_set = app_models.OrderItem.objects.all()[:count]
+    return list(query_set)
+
+
+def get_valid_subscribers() -> list[app_models.TelegramSubscriber]:
+    
+    return list(app_models.TelegramSubscriber.objects.filter(is_valid=True).all())

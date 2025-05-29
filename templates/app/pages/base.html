@@ -20,7 +20,31 @@
                 {% block content %}{% endblock %}
             </main>
         
-            {% include "app/includes/footer.html" %}  <!-- Вставляем футер -->
+            {% include "app/includes/footer.html" %} 
         </div>
+        <script>
+            // Уведомление с кнопкой согласия
+            document.addEventListener('DOMContentLoaded', function () {
+                if (!localStorage.getItem('userConsent')) {
+                    let consentBanner = document.createElement('div');
+                    consentBanner.innerHTML = `
+                        <div style="position: fixed; bottom: 0; z-index: 999999; width: 100%; background: #f0f0f0; padding: 15px; text-align: center; box-shadow: 0 -2px 5px rgba(0,0,0,0.2); font-size:14px;">
+                            <br>Wir benutzen Cookies, um Ihre persönlichen Einstellungen zu speichern, die Benutzung zu vereinfachen und Zugriffszahlen zu erhalten. </br>
+                            <br>Wenn Sie auf Akzeptieren klicken, erlauben Sie uns die Speicherung aller Cookies.</br>
+
+                            <br>Sie haben das Recht, Ihrer Einwilligung nach Zustimmung zu widersprechen. </br>
+                            <br>In unserer <a href="/datenschutz" target="_blank" style="color: #e03638;">Datenschutzerklärung</a> finden Sie eine Möglichkeit, Ihre Einwilligung zurückzuziehen oder die Einstellungen zu bearbeiten.</br>
+                            <button id="acceptConsent" style="margin-left: 10px; margin-top: 10px;padding: 10px; background: #e03638; color: #fff; border: none;  border-radius: 6px; cursor: pointer;">Akzeptieren</button>
+                        </div>
+                    `;
+                    document.body.appendChild(consentBanner);
+            
+                    document.getElementById('acceptConsent').onclick = function () {
+                        localStorage.setItem('userConsent', 'true');
+                        consentBanner.remove();
+                    };
+                }
+            });
+            </script>
     </body>
 </html>

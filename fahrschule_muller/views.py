@@ -20,8 +20,7 @@ def custom_400(request, exception):
     return render(request, "app/400.html", status=400)
 
 
-def home(request):
-    
+def home(request):    
     reviews = db_manager.get_reviews(20)
     return render(request, 'app/pages/index.html', context={'reviews': reviews})
 
@@ -66,6 +65,24 @@ def datenschutz(request):
     return render(request, 'app/pages/datenschutz.html')
 
 
+def ausbildung(request):
+    return render(request, 'app/pages/ausbildung.html')
+
+
+def stelle(request):
+    return render(request, 'app/pages/datenschutz.html')
+
+
+def products(request):
+    products = db_manager.get_products(20)
+    return render(request, 'app/pages/products.html', context={'products': products})
+
+
+def products_detail(request):
+    products = db_manager.get_products(20)
+    return render(request, 'app/pages/products.html', context={'products': products})
+
+
 def anfrage(request):
     if request.method == "POST":
 
@@ -74,14 +91,17 @@ def anfrage(request):
         except json.JSONDecodeError:
             return HttpResponse(status=400)
         
-        print(request_body)
+        print("Received request body:", request_body)
+        
         db_manager.check_and_save_message({
             'name': request_body.get("name", ""),
             'phone': request_body.get("phone", ""),
             'url': request_body.get("url", ""), 
-            'form_name': request_body.get("form", "")     
+            'form_name': request_body.get("form", ""), 
+            'message': request_body.get("message", ""), 
+            'connection_type': request_body.get("connection_type", ""),     
         })
 
-        return JsonResponse({"redirect_url": "anfrage/"})
+        return JsonResponse({"redirect_url": "/anfrage/"})
 
     return render(request, 'app/pages/success.html')

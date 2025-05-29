@@ -15,18 +15,18 @@
         <div class="footer-nav__item">
             <h2>Unterrichtszeiten</h2>
             <ul>
-                <li><a href="">Mo.: 18:00 – 19:30</a></li>
-                <li><a href="">Do.: 18:00 – 19:30</a></li>
-                <li><a href="">Sa.: nach Absprache</a></li>
+                <li><a href="#">Mo.: 18:00 – 19:30</a></li>
+                <li><a href="#">Do.: 18:00 – 19:30</a></li>
+                <li><a href="#">Sa.: nach Absprache</a></li>
             </ul>
         </div>
         <div class="footer-nav__item">
             <h2>Fahrschule</h2>
             <ul>
                 <li><a href="/team/">Team</a></li>
-                <li><a href="">Fuehrerschein kosten</a></li>
-                <li><a href="">...</a></li>
-                <li><a href="">...</a></li>
+                <li><a href="/products/">Lehrmittel</a></li>
+                <li><a href="/кarriere/ausbildung">Ausbildung</a></li>
+                <li><a href="/кarriere/stelle">Wir suchen Fahrlehrer</a></li>
                 <li><a href="">...</a></li>
             </ul>
         </div>
@@ -93,69 +93,55 @@
             <div class="modal-content__form form-block">
 
                 <form action="#" method="POST" class="form form--modal" data-js-form="">
-
+                    {% csrf_token %}
                     <div class="form__inputs-hidden">
                         <input type="text" name="formName" hidden="" value="">
                         <!-- <input type="url" name="url" pattern="https://.*" hidden value=""> pattern="https?://.+" -->
-                        <input type="url" name="url" hidden="" value="https://autonomer1.ru/">
+                        <input type="url" name="url" hidden="" value="https://fahrschule-svs-mueller.de/">
                     </div>
 
                     <div class="form__inputs form__inputs--window">
                         <!--  autocomplete required -->
                         <div class="input-container input-container--inner">
                             <input class="input" type="text" name="name" data-mask="name" data-js-input="">
-                            <label class="label">Ваше имя</label>
+                            <label class="label">Name</label>
                             <div class="bar"></div>
                         </div>
 
                         <div class="input-container input-container--inner">
                             <input class="input" type="tel" id="phone" name="phone" data-mask="phone" data-js-input="">
-                            <label class="label">Телефон</label>
+                            <label class="label">Phone</label>
                             <div class="bar"></div>
                         </div>
 
                         <div class="input-container input-container--list" data-js-select-block="">
-                            <label class="label-list">Выберите Филиал Автошколы</label>
+                            <!--<label class="label-list">Как с&nbsp;Вами связаться?</label>-->
 
-                            <div class="form-select" data-js-input-select="">Филиалы</div>
-
-                            <ul data-js-select-list="">
-                                <li data-js-select="м.Первомайская">м. Первомайская</li>
-                                <li data-js-select="м.Новогиреево">м. Новогиреево</li>
-                                <li data-js-select="м.Шоссе Энтузиастов">м. Шоссе Энтузиастов</li>
-                                <li data-js-select="м.Бутырская">м. Бутырская</li>
-                            </ul>
-
-                            <input type="text" name="fill" value="" class="input-hidden" hidden="" data-js-select-hidden="">
-                        </div>
-
-                        <div class="input-container input-container--list" data-js-select-block="">
-                            <label class="label-list">Как с&nbsp;Вами связаться?</label>
-
-                            <div class="form-select" data-js-input-select="">Выберите способ связи</div>
+                            <div class="form-select" data-js-input-select="">Kommunikationsmethode</div>
 
                             <ul data-js-select-list="">
-                                <li data-js-select="Телефон">Телефон</li>
+                                <li data-js-select="Phone">Phone</li>
                                 <li data-js-select="WhatsApp">WhatsApp</li>
-                                <!-- <li data-js-select="Telegram">Telegram</li> -->
+                                <li data-js-select="Termin">Termin im Büro</li>
                             </ul>
 
                             <input type="text" name="social" value="" class="input-hidden" hidden="" data-js-select-hidden="">
                         </div>
 
-                        <div class="input-container-submit">
+                    </div>
 
-                            <button type="submit" class="btn btn--big btn--red">Отправить</button>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" id= "formMessage" name="formMessage" rows="3" placeholder="Ihre Nachricht"></textarea>
+                      </div>
 
-                        </div>
-
+                    <div class="input-container-submit mt-3">
+                        <button type="submit" class="btn btn--big btn--red">Anfrage absenden</button>
                     </div>
 
                 </form>
             </div>
 
-            <div class="form-person">Нажимая кнопку отправки формы, я&nbsp;подтверждаю свое
-                согласие с&nbsp;<a href="https://autonomer1.ru/system/politika">Политикой в&nbsp;отношении обработки персональных данных</a> сайта Автошколы № 1.
+            <div class="form-person">Ich versichere, die Datenschutzerklärung gelesen zu haben und stimme der Nutzung meiner Daten gemäß der Datenschutzerklärung zu.*
             </div>
 
         </div>

@@ -43,6 +43,7 @@ def build_admin_notification_message(message: Message) -> str:
         f"🧾 Форма: {message.form_name}\n"
         f"👤 Автор: {message.author or 'Не указано'}\n"
         f"📞 Контакт: {message.phone_number or 'Не указано'}\n"
+        f"➡️ Как связаться: {message.connection_type or 'Не указано'}\n"
         f"🌐 Страница: {message.url or 'Не указано'}\n"
         f"💬 Сообщение:\n{message.text}"
     )

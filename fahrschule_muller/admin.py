@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Message, Review, TelegramSubscriber
+from .models import Message, Review, TelegramSubscriber, OrderItem, OrderItemType
+
 
 @admin.register(Message)  # Декоратор для регистрации модели
 class MessageAdmin(admin.ModelAdmin):
@@ -21,3 +22,13 @@ class ReviewAdmin(admin.ModelAdmin):
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = ("chat_id", "username", "subscribed_at", "is_valid")  # Поля, которые будут показаны в списке
     ordering = ("-subscribed_at",)  # Сортировка по дате создания (новые сверху)
+
+
+@admin.register(OrderItemType)  # Декоратор для регистрации модели
+class OrderItemTypeAdmin(admin.ModelAdmin):
+    list_display = ("title",)  # Поля, которые будут показаны в списке
+
+
+@admin.register(OrderItem)  # Декоратор для регистрации модели
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ("title", "article_number")  # Поля, которые будут показаны в списке

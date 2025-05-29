@@ -1,0 +1,65 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<section class="articles-section pb60">
+    <div class="pt80 pb40">
+    </div>
+    <div class="container">
+
+        <div class="articles-section__title">
+            <h1 class="title-1">Unterrichtsmaterialien</h1>
+        </div>
+
+        <div class="article-page">
+            <div class="article-page__wrapper content">
+
+                {% for item  in products %}
+                <div class="single_product list_item pt-3">
+                    <div class="row align-items-center">   
+                        <div class="col-lg-3 col-md-5">
+                            <div class="product_thumb">
+                                 <a 
+                                    href=""
+                                    data-js-modal-target="modal-call" 
+                                    aria-label="{{ item.title }} (art. {{ item.article_number }})" 
+                                    data-js-desc="{{ item.full_description }}" data-js-title="{{item.title}} (art. {{ item.article_number }} )">
+                                        <img src="/media/{{ item.image }}" alt="">
+                                </a>
+
+                            </div> 
+                        </div>
+                        <div class="col-lg-9 col-md-7">
+                            <div class="product_content">   
+                                <h3><a href=""> {{ item.title }} </a></h3>
+                                <div class="product_price">
+                                    <span class="current_price">Artikelnummer: {{ item.article_number }}</span>
+                                </div>
+                                <div class="product_description">
+                                    {{ item.description|safe}}    
+                                </div>
+                                <div class="product_action pt-3">
+                                    <button 
+                                        type="button" 
+                                        class="btn btn--big btn--red" 
+                                        data-js-modal-target="modal-call" 
+                                        aria-label="{{ item.title }} (art. {{ item.article_number }})" 
+                                        data-js-desc="{{ item.full_description }}" data-js-title="{{item.title}} (art. {{ item.article_number }} )">Mehr Information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                {% endfor %}
+                
+                
+            </div>
+        </div>        
+    </div>
+</section>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}

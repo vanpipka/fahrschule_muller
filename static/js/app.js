@@ -412,6 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const inputSocial = form.querySelector('input[name="social"]');
         const inputFill = form.querySelector('input[name="fill"]');
         const inputUrl = form.querySelector('input[name="url"]');
+        const formMessage = form.querySelector('textarea[name="formMessage"]');
 
         // Значения value
         const inputNameValue = inputName.value.trim();
@@ -419,7 +420,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const inputNameFormValue = inputNameForm.value.trim();
         const inputFillValue = inputFill ? inputFill.value.trim() : ''; // Проверяем, есть ли поле
         const inputSocialValue = inputSocial ? inputSocial.value.trim() : ''; // Проверяем, есть ли поле
+        const formMessageValue = formMessage ? formMessage.value.trim() : ''; // Проверяем, есть ли поле
         const inputUrlValue = inputUrl.value.trim();
+        const connectionType = inputSocialValue ? inputSocialValue : 'Телефон'; // Значение по умолчанию
         // Очистить все ошибки
         removeAllErrors(form);
 
@@ -468,7 +471,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Добавляем поле способа связи, если оно есть и заполнено
           
         if (inputSocial && inputSocialValue) {
-            let cleanedPhone = inputPhoneValue.replace(/[\s()-]/g, '');
+
+            let cleanedPhone = inputPhoneValue.replace(/[\s()-]/g, '');        
             if (inputSocialValue === 'WhatsApp') {
               // Remove spaces, parentheses, and dashes from the phone number
               message += `\n<b>Способ связи:</b> по WhatsApp wa.me/${cleanedPhone}`;
@@ -477,8 +481,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
           
-          message += `\n\n<i>Уважамые администраторы, пожалуйста, отвечайте на заявку как можно скорее! Не забываете ставить реакцию на данное сообщение, например: ЗАПИСЬ❤️, КОНКУРЕНТ👎, ПЕРЕЗВОНИТЬ🤞, НЕДОЗВОН🤔</i>`;
-        
           // Отправка данных в Telegram
           sendTelegramMessage(message);
         }
@@ -486,9 +488,20 @@ document.addEventListener("DOMContentLoaded", function () {
         // Функция отправки сообщения в Telegram
         function sendTelegramMessage(message) {
 
+          console.log('Отправка сообщения в Telegram:', message);
+
           fetch("/anfrage/", {
             method: "POST",
-            body: JSON.stringify({url: window.location.href, name: inputNameValue, form: inputNameFormValue, phone: inputPhoneValue}),
+            body: JSON.stringify(
+                      {
+                        url: window.location.href, 
+                        name: inputNameValue, 
+                        form: inputNameFormValue, 
+                        phone: inputPhoneValue,
+                        message: formMessageValue,
+                        connection_type: connectionType
+                      }
+                    ),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
               "X-CSRFToken": document.getElementsByName('csrfmiddlewaretoken')[0].value
@@ -496,6 +509,7 @@ document.addEventListener("DOMContentLoaded", function () {
           })
               .then(response => response.json())
               .then(data => {
+                console.log(data.redirect_url);
                 window.location.href = data.redirect_url; // Выполняем редирект
               })
               .catch(error => {
@@ -506,22 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
               });
           
           return;
-          
-          fetch('/anfrage')
-            .then(response => {
-              if (!response.ok) {
-                console.log('Ошибка отправки сообщения в Telegram');
-                throw new Error('Ошибка отправки сообщения в Telegram');
-              } else {
-                window.location.href = 'system/spasibo';
-              }
-            })
-            .catch(error => {
-              console.error(error);
-            })
-            .finally(() => {
-              submitButton.disabled = false;
-            });
+
         }
 
 

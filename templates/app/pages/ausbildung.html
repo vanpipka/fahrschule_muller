@@ -1,0 +1,79 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<div class="content-block content-block__container content-block--taxi-2">
+  <div class="pt80 pb40">
+  </div>
+  <div class="content-block__body pb80">
+
+    <div class="content-block__title">
+      <h1 class="title-1">Fahrlehrerausbildung bei „<span>SVS-Müller</span>“</h1>
+      <h2 class="title-3">Starten Sie Ihre Karriere als Fahrlehrer – mit Zukunft, Verantwortung und Perspektive.</h2>
+      <div class="title-sub">Suchen Sie einen krisensicheren Beruf mit gesellschaftlicher Relevanz?</div>
+    </div>
+    <div class="content-block__text">
+      <p>Möchten Sie nicht nur selbst fahren, sondern auch andere dabei unterstützen, sicher und verantwortungsvoll am Straßenverkehr teilzunehmen? 
+        Die Fahrschule „SVS-Müller“ bietet Ihnen eine umfassende Ausbildung zum Fahrlehrer – mit besten Chancen auf dem Arbeitsmarkt.</p>
+      <p>Für wen ist die Fahrlehrerausbildung geeignet?</p>
+    </div>
+
+    <div class="content-block__list content-block__list--two">
+      <ul>
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Sie suchen eine stabile, sinnvolle Tätigkeit mit Zukunft.
+          </div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Sie möchten Ihr Wissen weitergeben und Fahranfänger sicher begleiten.</div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            <svg style="width: 30px; height: 30px;" class="icon-ok">
+              <use xlink:href="/static/img/sprite.svg#ok"></use>
+            </svg>
+          </div>
+
+          <div class="content-block__list-title">Sie interessieren sich für eine verantwortungsvolle Aufgabe im Bildungs- und Verkehrsbereich.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-block__btn">
+      <p>Werden Sie Teil des Profi-Teams von „SVS-Müller“ und gestalten Sie die Mobilität von morgen mit!
+        Kontaktieren Sie uns noch heute und erfahren Sie mehr über die Fahrlehrerausbildung und Ihre Einstiegsmöglichkeiten.      
+        </p>
+
+      <button 
+        type="button" 
+        class="btn btn--big btn--red" 
+        data-js-modal-target="modal-call" 
+        aria-label="Восстановить навыки вождения" 
+        data-js-desc="Hinterlassen Sie eine Anfrage, wir werden Sie innerhalb von 15 Minuten zurückrufen und im Detail über die Möglichkeiten einer beruflichen Ausbildung in unserer Fahrschule informieren." 
+        data-js-title="Ausbildung zum Fahrlehrer">
+          Jetzt bewerben
+      </button>
+    </div>
+
+  </div>
+</div>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}
