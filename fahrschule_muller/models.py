@@ -130,6 +130,21 @@ class Anmeldung(models.Model):
         blank=True,
         verbose_name='Адрес'
     )
+    fuhrerschein = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name='Категория водительских прав'
+    )
+    course = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name='Курс'
+    )
+    anschrift = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name='Адрес'
+    )
     plz = models.CharField(
         max_length=20,
         blank=True,

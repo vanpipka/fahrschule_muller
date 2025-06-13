@@ -1,3 +1,4 @@
+from datetime import datetime
 from fahrschule_muller import models as app_models
 from exam import models as exam_models
 
@@ -26,6 +27,8 @@ def check_and_save_anmeldung(data):
         email = data.get('email', ''), 
         phone = data.get('phone', ''), 
         geburtsort = data.get('geburtsort', ''), 
+        fuhrerschein = data.get('fuhrerschein', ''), 
+        course = data.get('course', ''), 
         geburtsdatum = geburtsdatum, 
         fristablauf = fristablauf, 
         form_message = data.get('form_message', '')
@@ -61,6 +64,9 @@ def get_random_questions_by_theme(theme_id: str = "", count: int = 20) -> list[e
 
 
 def get_questions_by_ids(ids: list[str] = None) -> list[exam_models.Question]:
+
+    if not isinstance(ids, list):
+        raise ValueError("The 'ids' parameter must be a list of question IDs.")
     
     if ids is None: ids = []
         
@@ -70,17 +76,26 @@ def get_questions_by_ids(ids: list[str] = None) -> list[exam_models.Question]:
 
 def get_reviews(count: int = 20) -> list[app_models.Review]:
 
+    if count <= 0:
+        raise ValueError("The 'count' parameter must be a positive integer.")
+
     query_set = app_models.Review.objects.all()[:count]
     return list(query_set)
 
 
 def get_themes(count: int = 10) -> list[exam_models.Thema]:
 
+    if count <= 0:
+        raise ValueError("The 'count' parameter must be a positive integer.")
+
     query_set = exam_models.Thema.objects.all()[:count]
     return list(query_set)
 
 
 def get_products(count: int = 10) -> list[app_models.OrderItem]:
+
+    if count <= 0:
+        raise ValueError("The 'count' parameter must be a positive integer.")
 
     query_set = app_models.OrderItem.objects.all()[:count]
     return list(query_set)
@@ -89,3 +104,14 @@ def get_products(count: int = 10) -> list[app_models.OrderItem]:
 def get_valid_subscribers() -> list[app_models.TelegramSubscriber]:
     
     return list(app_models.TelegramSubscriber.objects.filter(is_valid=True).all())
+
+
+def get_next_asf_courses(date: datetime, count: int = 3) -> list[app_models.AsfCourse]:
+    
+    if not isinstance(date, datetime):
+        raise ValueError("The 'date' parameter must be a datetime object.")
+    if count <= 0:
+        raise ValueError("The 'count' parameter must be a positive integer.")
+
+    query_set = app_models.AsfCourse.objects.filter(lesson_1_date__gt=date).order_by('lesson_1_date')[:count]
+    return list(query_set)

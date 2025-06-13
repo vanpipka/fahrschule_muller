@@ -1,4 +1,5 @@
 from django.http import JsonResponse, HttpResponse
+from datetime import datetime
 from django.shortcuts import render
 import json
 from services import db_manager
@@ -142,10 +143,14 @@ def aufbauseminare(request):
 
 
 def aufbauseminare_anmeldung(request):
+
+    courses = db_manager.get_next_asf_courses(datetime.now(), 3)
+
     return render(
         request, 
         'app/pages/asf.html',
         context={
+            'vailable_courses': courses,
             'title': 'Aufbauseminare für Fahranfänger und Punkteauffällige – S.V.S. Müller Herford',
             'description': 'Unsere Aufbauseminare (ASF & FES) helfen Ihnen, Fahrverhalten zu verbessern und Punkte abzubauen. Professionelle Nachschulungen in Herford.',
             'keywords': 'Aufbauseminar Herford, ASF, FES, Punkteabbau, Fahrschule S.V.S. Müller, Nachschulung',

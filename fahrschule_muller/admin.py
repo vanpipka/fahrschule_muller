@@ -13,8 +13,8 @@ class MessageAdmin(admin.ModelAdmin):
 
 @admin.register(Anmeldung)  # Декоратор для регистрации модели
 class Anmeldung(admin.ModelAdmin):
-    list_display = ("vorname", "anschrift", "email", "phone", "geburtsdatum")  # Поля, которые будут показаны в списке
-    list_filter = ("form_name",)  # Фильтры справа
+    list_display = ("vorname", "anschrift", "email", "phone", "geburtsdatum", "course", "created_date")  # Поля, которые будут показаны в списке
+    # list_filter = ("form_name",)  # Фильтры справа
     ordering = ("-created_date",)  # Сортировка по дате создания (новые сверху)
     readonly_fields = ("created_date",)  # Поля, которые нельзя редактировать
 

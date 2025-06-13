@@ -33,7 +33,7 @@
           <form method="post" id="asf" action="asf/" data-formid="4" data-js-form="">
             {% csrf_token %}
             <div class="form__inputs-hidden">
-              <input type="text" name="formName" hidden="" value="asf">
+              <input type="text" name="form_name" hidden="" value="asf">
               <!-- <input type="url" name="url" pattern="https://.*" hidden value=""> pattern="https?://.+" -->
               <input type="url" name="url" hidden="" value="https://fahrschule-svs-mueller.de/aufbauseminare/anmeldung/">
             </div>
@@ -105,13 +105,31 @@
               </div>
 
               <div class="input-container input-container--inner">
+                <input class="input" type="text" id="fuhrerschein" name="fuhrerschein" data-mask="" data-js-input="">
+                <label class="label">Ihre führerschein</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
                 <input type="date" id="geburtsdatum" name="fristablauf" data-js-input="" placeholder="" required>
                 <label class="label label--active">Fristablauf*</label>
                 <div class="bar"></div>
               </div>
 
-              <div class="input-container input-container--inner"> &nbsp; </div>
+            </div>
 
+            <div class="input-container input-container--list" data-js-select-block="">
+              <label class="label-list">An welchem Kurs möchten Sie teilnehmen?</label>
+
+              <div class="form-select" data-js-input-select="">Kurs</div>
+
+              <ul data-js-select-list="">
+                  {% for item in vailable_courses %}
+                    <li data-js-select="ASF Kurs ab {{ item.lesson_1_date|date:'d.m.Y' }}">ASF Kurs ab {{ item.lesson_1_date|date:"d.m.Y" }}</li>
+                  {% endfor %}
+              </ul>
+
+              <input type="text" name="course" value="" class="input-hidden" hidden="" data-js-select-hidden="">
             </div>
 
             <div class="form-group mt-3">

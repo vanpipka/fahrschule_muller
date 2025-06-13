@@ -3446,9 +3446,11 @@ h6 span {
   color: var(--primary);
   font-weight: 400;
 }
+/*
 .input-container.input-container--list .form-select::after {
   content: "";
   position: relative;
+  right: -29px;
   top: 8px;
   width: 16px;
   height: 16px;
@@ -3457,7 +3459,7 @@ h6 span {
   border-style: solid;
   pointer-events: none;
 }
-
+*/
 .form-person {
   font-size: 14px;
   text-align: center;
