@@ -74,7 +74,7 @@
 <div id="modal-call" class="modal">
     <div class="modal-content modal-content--form">
 
-        <button type="button" aria-label="Закрыть модальное окно" class="modal-content__close" data-js-modal-close="">
+        <button type="button" aria-label="Close" class="modal-content__close" data-js-modal-close="">
 
             <div class="close">
                 <div class="close__left"></div>
@@ -92,7 +92,7 @@
 
             <div class="modal-content__form form-block">
 
-                <form action="#" method="POST" class="form form--modal" data-js-form="">
+                <form action="#" method="POST" class="form form--modal" data-js-form="" name="asf">
                     {% csrf_token %}
                     <div class="form__inputs-hidden">
                         <input type="text" name="formName" hidden="" value="">
@@ -132,7 +132,7 @@
 
                     <div class="form-group mt-3">
                         <textarea class="form-control" id= "formMessage" name="formMessage" rows="3" placeholder="Ihre Nachricht"></textarea>
-                      </div>
+                    </div>
 
                     <div class="input-container-submit mt-3">
                         <button type="submit" class="btn btn--big btn--red">Anfrage absenden</button>

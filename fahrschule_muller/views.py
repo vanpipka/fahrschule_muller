@@ -141,6 +141,34 @@ def aufbauseminare(request):
     )
 
 
+def aufbauseminare_anmeldung(request):
+    return render(
+        request, 
+        'app/pages/asf.html',
+        context={
+            'title': 'Aufbauseminare für Fahranfänger und Punkteauffällige – S.V.S. Müller Herford',
+            'description': 'Unsere Aufbauseminare (ASF & FES) helfen Ihnen, Fahrverhalten zu verbessern und Punkte abzubauen. Professionelle Nachschulungen in Herford.',
+            'keywords': 'Aufbauseminar Herford, ASF, FES, Punkteabbau, Fahrschule S.V.S. Müller, Nachschulung',
+            }   
+    )
+
+
+def aufbauseminare_anmeldung_asf(request):
+
+    if request.method == "POST":
+        
+        try:
+            request_body = request.POST.dict()
+        except json.JSONDecodeError:
+            return HttpResponse(status=400)
+        
+        db_manager.check_and_save_anmeldung(request_body)
+
+        return render(request, 'app/pages/success.html')
+
+    return HttpResponse(status=404)
+
+
 def datenschutz(request):
     return render(
         request, 

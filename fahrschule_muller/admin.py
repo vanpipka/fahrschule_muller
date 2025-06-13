@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Message, Review, TelegramSubscriber, OrderItem, OrderItemType
+from .models import Message, Review, TelegramSubscriber, OrderItem, OrderItemType, Anmeldung, AsfCourse
 
 
 @admin.register(Message)  # Декоратор для регистрации модели
@@ -11,11 +11,20 @@ class MessageAdmin(admin.ModelAdmin):
     readonly_fields = ("created_date",)  # Поля, которые нельзя редактировать
 
 
+@admin.register(Anmeldung)  # Декоратор для регистрации модели
+class Anmeldung(admin.ModelAdmin):
+    list_display = ("vorname", "anschrift", "email", "phone", "geburtsdatum")  # Поля, которые будут показаны в списке
+    list_filter = ("form_name",)  # Фильтры справа
+    ordering = ("-created_date",)  # Сортировка по дате создания (новые сверху)
+    readonly_fields = ("created_date",)  # Поля, которые нельзя редактировать
+
+
 @admin.register(Review)  # Декоратор для регистрации модели
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ("author", "text", "created_date")  # Поля, которые будут показаны в списке
     search_fields = ("author",)  # Поля, по которым можно искать
     ordering = ("-created_date",)  # Сортировка по дате создания (новые сверху)
+    readonly_fields = ("created_date",)  # Поля, которые нельзя редактировать
 
 
 @admin.register(TelegramSubscriber)  # Декоратор для регистрации модели
@@ -32,3 +41,9 @@ class OrderItemTypeAdmin(admin.ModelAdmin):
 @admin.register(OrderItem)  # Декоратор для регистрации модели
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ("title", "article_number")  # Поля, которые будут показаны в списке
+
+
+@admin.register(AsfCourse)  # Декоратор для регистрации модели
+class AsfCourseAdmin(admin.ModelAdmin):
+    list_display = ("title", "lesson_1_date", "lesson_2_date", "lesson_3_date", "lesson_4_date", "fahrproben")  # Поля, которые будут показаны в списке
+    ordering = ("-lesson_1_date",)  # Сортировка по дате создания (новые сверху)

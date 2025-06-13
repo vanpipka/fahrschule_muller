@@ -1,0 +1,140 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<section class="articles-section pb60">
+  <div class="pt80 pb40">
+  </div>
+  <div class="container">
+
+    <div class="articles-section__title">
+      <h1 class="title-1">Anmeldung zum ASF Seminar</h1>
+    </div>
+
+    <div class="article-page">
+      <div class="article-page__wrapper content">
+
+        <p>Bitte melden Sie sich hier Online an:</p>
+        <p>Anmeldung für ein ASF-Seminar. Sollten Sie Unterstützung benötigen, dann wenden Sie sich bitte an unser Büro unter (05223) 6 28 60 oder (05221) 34 64 930. 
+          Alle Daten auf unserer Seite werden verschlüsselt (SSL) übertragen. Das ASF-Seminar kostet 395€. 
+          Der gesamte Betrag ist spätestens eine Woche vor der ersten Sitzung zu bezahlen.</p>
+        
+        <p>*Diese Felder werden mindestens benötigt um Ihre Angaben verarbeiten zu können.</p>
+
+      </div>
+    </div>
+
+    <div id="modal-call">
+      <div class="modal-content modal-content--form">
+        <div class="modal-content__body">
+
+          <form method="post" id="asf" action="asf/" data-formid="4" data-js-form="">
+            {% csrf_token %}
+            <div class="form__inputs-hidden">
+              <input type="text" name="formName" hidden="" value="asf">
+              <!-- <input type="url" name="url" pattern="https://.*" hidden value=""> pattern="https?://.+" -->
+              <input type="url" name="url" hidden="" value="https://fahrschule-svs-mueller.de/aufbauseminare/anmeldung/">
+            </div>
+
+            <div class="form__inputs form__inputs--window">
+            
+              <div class="input-container input-container--list" data-js-select-block="">
+                <!--<label class="label-list">Как с&nbsp;Вами связаться?</label>-->
+
+                <div class="form-select" data-js-input-select="">Anrede</div>
+
+                <ul data-js-select-list="">
+                    <li data-js-select="Herr">Herr</li>
+                    <li data-js-select="Frau">Frau</li>
+                    <li data-js-select="Diver">Diver</li>
+                </ul>
+
+                <input type="text" name="anrede" value="" class="input-hidden" hidden="" data-js-select-hidden="">
+              </div>
+
+              <div class="input-container input-container--inner">  &nbsp; </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="text" name="vorname" data-mask="name" data-js-input="" required>
+                <label class="label">Vorname*</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="text" name="nachname" data-mask="name" data-js-input="">
+                <label class="label">Nachname</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="" name="anschrift" data-js-input="" required>
+                <label class="label">Anschrift*</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="number" name="plz" data-js-input="">
+                <label class="label">PLZ</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="mail" name="email" data-mask="email" data-js-input="">
+                <label class="label">E-mail</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="tel" id="phone" name="phone" data-mask="phone" data-js-input="" required>
+                <label class="label">Phone*</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input class="input" type="text" id="geburtsort" name="geburtsort" data-js-input="">
+                <label class="label">Geburtsort</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input type="date" id="geburtsdatum" name="geburtsdatum" data-js-input="" placeholder="" required>
+                <label class="label label--active">Geburtsdatum*</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner">
+                <input type="date" id="geburtsdatum" name="fristablauf" data-js-input="" placeholder="" required>
+                <label class="label label--active">Fristablauf*</label>
+                <div class="bar"></div>
+              </div>
+
+              <div class="input-container input-container--inner"> &nbsp; </div>
+
+            </div>
+
+            <div class="form-group mt-3">
+              <textarea class="form-control" id= "formMessage" name="formMessage" rows="3" placeholder="Bemerkungen/Besonderheiten etc."></textarea>
+            </div>
+
+            <div class="input-container-submit mt-3">
+              <button type="submit" class="btn btn--big btn--red">
+                Anmeldung zum ASF-Kurs
+              </button>
+            </div>
+          
+          </form>
+
+          <div class="form-person">
+            Ich versichere, die Datenschutzerklärung gelesen zu haben und stimme der Nutzung meiner Daten gemäß der Datenschutzerklärung zu.*
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}

@@ -403,6 +403,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // ================= Валидация и отправка формы =================
       
       form.addEventListener('submit', function (event) {
+
+        if (event.target.name = 'asf') { return };  // исключаем из обработки форму asf
+
         event.preventDefault();
 
         const submitButton = form.querySelector('button[type="submit"]');

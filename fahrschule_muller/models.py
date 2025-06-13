@@ -96,3 +96,111 @@ class OrderItem(models.Model):
         
     def __str__(self):
         return f"{self.title} ({self.article_number})"
+
+
+class Anmeldung(models.Model):
+
+    form_name = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name='Имя формы'
+    )
+    url = models.URLField(
+        max_length=500,
+        blank=True,
+        verbose_name='Источник URL'
+    )
+    anrede = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name='Обращение (Herr/Frau)'
+    )
+    vorname = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name='Имя'
+    )
+    nachname = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name='Фамилия'
+    )
+    anschrift = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name='Адрес'
+    )
+    plz = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name='Почтовый индекс'
+    )
+    email = models.EmailField(
+        max_length=254,
+        blank=True,
+        verbose_name='Email'
+    )
+    phone = models.CharField(
+        max_length=50,
+        blank=True,
+        verbose_name='Телефон'
+    )
+    geburtsort = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name='Место рождения'
+    )
+    geburtsdatum = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Дата рождения'
+    )
+    fristablauf = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name='Срок окончания'
+    )
+    form_message = models.TextField(
+        blank=True,
+        verbose_name='Сообщение'
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата создания'
+    )
+    created_date = models.DateTimeField(default=timezone.now)
+    date_of_sending_to_admin = models.DateTimeField(blank=True, null=True)
+    result_of_sending_to_admin = models.TextField(blank=True, default="")
+
+    def __str__(self):
+        
+        return f"{self.vorname} {self.nachname} — {self.form_name or 'Форма'}"
+    
+    class Meta:
+        verbose_name = "ASF заявка"
+        verbose_name_plural = "ASF заявки"
+    
+    def set_date_of_sending_to_admin(self, result_of_sending_to_admin: bool, message: str = ""):
+        
+        self.date_of_sending_to_admin = timezone.now()
+        self.result_of_sending_to_admin = message
+        self.save(update_fields=['date_of_sending_to_admin', 'result_of_sending_to_admin'])
+
+
+class AsfCourse(models.Model):
+
+    title = models.CharField(max_length=255, verbose_name="Название курса")
+    lessons_duration = models.IntegerField(verbose_name="Длительность одного занятия в минутах", default=135)
+    lesson_1_date = models.DateTimeField(verbose_name="Дата/время первого занятия")
+    lesson_2_date = models.DateTimeField(verbose_name="Дата/время второго занятия")  
+    lesson_3_date = models.DateTimeField(verbose_name="Дата/время третьего занятия") 
+    lesson_4_date = models.DateTimeField(verbose_name="Дата/время четвертого занятия")  
+    fahrproben = models.TextField(max_length=100, default="", blank=True, verbose_name="Fahrproben")   
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "ASF Курс"
+        verbose_name_plural = "ASF Курсы"
+
+    def __str__(self):
+        return self.title

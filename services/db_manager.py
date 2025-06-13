@@ -2,6 +2,38 @@ from fahrschule_muller import models as app_models
 from exam import models as exam_models
 
 
+def check_and_save_anmeldung(data):
+
+    EMPTY_DATE = '0001-01-01'
+
+    geburtsdatum = data.get('geburtsdatum', EMPTY_DATE)
+    fristablauf = data.get('fristablauf', EMPTY_DATE)
+
+    if not geburtsdatum:
+        geburtsdatum = EMPTY_DATE
+
+    if not fristablauf:
+        fristablauf = EMPTY_DATE
+
+    message = app_models.Anmeldung(
+        form_name = data.get('form_name', ''), 
+        url = data.get('url', ''), 
+        anrede = data.get('anrede', ''), 
+        vorname = data.get('vorname', ''), 
+        nachname = data.get('nachname', ''), 
+        anschrift = data.get('anschrift', ''), 
+        plz = data.get('plz', ''), 
+        email = data.get('email', ''), 
+        phone = data.get('phone', ''), 
+        geburtsort = data.get('geburtsort', ''), 
+        geburtsdatum = geburtsdatum, 
+        fristablauf = fristablauf, 
+        form_message = data.get('form_message', '')
+    )
+
+    message.save()
+
+
 def check_and_save_message(message_data):
 
     message = app_models.Message(
@@ -12,6 +44,7 @@ def check_and_save_message(message_data):
         url = message_data.get('url', ''),
         connection_type = message_data.get('connection_type', ''),
     )
+
     message.save()
 
     

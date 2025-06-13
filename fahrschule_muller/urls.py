@@ -29,6 +29,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('team/', views.team, name='team'),
     path('b_17/', views.b_17, name='b_17'),
+    path('aufbauseminare/anmeldung/asf/', views.aufbauseminare_anmeldung_asf, name='aufbauseminare _anmeldung_asf'),
+    path('aufbauseminare/anmeldung/', views.aufbauseminare_anmeldung, name='aufbauseminare _anmeldung'),
     path('aufbauseminare/', views.aufbauseminare, name='aufbauseminare'),
     path('motorrad/details', views.motorrad_details, name='motorrad_details'),
     path('motorrad/', views.motorrad, name='motorrad'),
