@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Message, Review, TelegramSubscriber, OrderItem, OrderItemType, Anmeldung, AsfCourse
+from .models import Message, Review, TelegramSubscriber, OrderItem, OrderItemType, Anmeldung, AsfCourse, SiteSettings
+
+
+@admin.register(SiteSettings)  # Декоратор для регистрации модели
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ("phone", "mobile_phone", "email", "address")  # Поля, которые будут показаны в списке
 
 
 @admin.register(Message)  # Декоратор для регистрации модели

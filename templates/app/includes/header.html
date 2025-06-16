@@ -97,11 +97,12 @@
                                     <h2>Herford</h2>
                                 </div>
                                 <div class="phone-info__desc info-call">
-                                    <a href="tel:0172-792 88 78">0172-792 88 78</a>
+                                    <a href="tel:{{company_phone}}">{{company_phone}}</a>
                                 </div>
                                 <div class="phone-info__btns">
 
-                                    <a href="https://www.google.com/maps/place/Fahrschule+SVS+M%C3%BCller/@52.11296,8.6714471,17z/data=!4m12!1m5!8m4!1e1!2s111165200688114550647!3m1!1e1!3m5!1s0x47ba143f17de02c3:0x9efff589d24b666a!8m2!3d52.11296!4d8.674022!16s%2Fg%2F1yg4dhmrk?hl=ru&entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoASAFQAw%3D%3D">Johannisstraße 36</a>
+                                    <a href="https://www.google.com/maps/place/Fahrschule+SVS+M%C3%BCller/@52.11296,8.6714471,17z/data=!4m12!1m5!8m4!1e1!2s111165200688114550647!3m1!1e1!3m5!1s0x47ba143f17de02c3:0x9efff589d24b666a!8m2!3d52.11296!4d8.674022!16s%2Fg%2F1yg4dhmrk?hl=ru&entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoASAFQAw%3D%3D">
+                                        {{company_address}}</a>
                                     <button 
                                         type="button" 
                                         class="btn" 
@@ -223,7 +224,7 @@
         </ul>
     </nav>
     <div class="mobile-nav__btns" data-js-mobile-footer="">
-        <a class="btn btn--icon btn--wts" href="https://wa.me/+74993904445">
+        <a class="btn btn--icon btn--wts" href="https://wa.me/{{company_mobile_phone}}">
             <div class="svg-icon svg-icon--wts">
                 <svg class="icon icon--white" style="width: 24px; height: 24px;">
                     <!--<use xlink:href="./img/sprite.svg#wts"></use>-->

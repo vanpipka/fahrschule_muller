@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'fahrschule_muller.context_processors.exam_items',
+                'fahrschule_muller.context_processors.company_contacts',
             ],
         },
     },

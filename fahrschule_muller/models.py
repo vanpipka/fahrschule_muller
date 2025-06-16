@@ -1,6 +1,25 @@
 import uuid
+from django.core.cache import cache
 from django.db import models
 from django.utils import timezone
+
+
+class SiteSettings(models.Model):
+    phone = models.CharField(max_length=50, default="", blank=True)
+    mobile_phone = models.CharField(max_length=50, default="", blank=True)
+    address = models.CharField(max_length=50, default="", blank=True)
+    email = models.EmailField(default="", blank=True)
+
+    def __str__(self):
+        return "Настройки сайта"
+
+    class Meta:
+        verbose_name = "Настройки сайта"
+        verbose_name_plural = "Настройки сайта"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        cache.delete('site_settings_cache')
 
 
 class Message(models.Model):

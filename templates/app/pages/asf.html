@@ -17,9 +17,9 @@
       <div class="article-page__wrapper content">
 
         <p>Bitte melden Sie sich hier Online an:</p>
-        <p>Anmeldung für ein ASF-Seminar. Sollten Sie Unterstützung benötigen, dann wenden Sie sich bitte an unser Büro unter (05223) 6 28 60 oder (05221) 34 64 930. 
-          Alle Daten auf unserer Seite werden verschlüsselt (SSL) übertragen. Das ASF-Seminar kostet 395€. 
-          Der gesamte Betrag ist spätestens eine Woche vor der ersten Sitzung zu bezahlen.</p>
+        <p>Anmeldung für ein ASF-Seminar. Sollten Sie Unterstützung benötigen, dann wenden Sie sich bitte an unser Büro unter
+           <a href="tel:{{company_phone}}">{{company_phone}}</a>.</p>
+        <p>Alle Daten auf unserer Seite werden verschlüsselt (SSL) übertragen.</p>
         
         <p>*Diese Felder werden mindestens benötigt um Ihre Angaben verarbeiten zu können.</p>
 
@@ -124,12 +124,32 @@
               <div class="form-select" data-js-input-select="">Kurs</div>
 
               <ul data-js-select-list="">
-                  {% for item in vailable_courses %}
+                  {% for item in available_courses %}
                     <li data-js-select="ASF Kurs ab {{ item.lesson_1_date|date:'d.m.Y' }}">ASF Kurs ab {{ item.lesson_1_date|date:"d.m.Y" }}</li>
                   {% endfor %}
               </ul>
 
               <input type="text" name="course" value="" class="input-hidden" hidden="" data-js-select-hidden="">
+                
+            </div>
+
+            <div class="pt-2">  
+              {% if not available_courses %}
+                          
+                    <p class="fw-lighter text-danger">Wir haben keine weiteren Kurse. </p>
+                    <p class="fw-lighter text-danger">Bitte kontaktieren Sie uns unter <a href="tel:{{company_phone}}">{{company_phone}}</a>, um die Termine für die nächsten Unterrichtseinheiten zu klären.   </p>                        
+                
+              {% else %}
+                {% for item in available_courses %}
+                  <p class="fw-bold"> Die 5 Termine für den Kurs ab dem {{ item.lesson_1_date|date:'d.m.Y' }}</p>
+                  <p class="fw-lighter">1. Unterrichtseinheit: {{ item.lesson_1_date|date:"d.m.Y" }} um {{ item.lesson_1_date|date:"H:i" }}</p>
+                  <p class="fw-lighter">Fahrprobe: {{ item.fahrproben }}</p>
+                  <p class="fw-lighter">2. Unterrichtseinheit: {{ item.lesson_2_date|date:"d.m.Y" }} um {{ item.lesson_2_date|date:"H:i" }}</p>
+                  <p class="fw-lighter">3. Unterrichtseinheit: {{ item.lesson_3_date|date:"d.m.Y" }} um {{ item.lesson_3_date|date:"H:i" }}</p>
+                  <p class="fw-lighter">4. Unterrichtseinheit: {{ item.lesson_4_date|date:"d.m.Y" }} um {{ item.lesson_4_date|date:"H:i" }}</p>
+
+                {% endfor %}
+              {% endif %}
             </div>
 
             <div class="form-group mt-3">

@@ -3,6 +3,14 @@ from fahrschule_muller import models as app_models
 from exam import models as exam_models
 
 
+def get_site_settings() -> app_models.SiteSettings:
+    
+    try:
+        return app_models.SiteSettings.objects.first()
+    except app_models.SiteSettings.DoesNotExist:
+        return None
+    
+
 def check_and_save_anmeldung(data):
 
     EMPTY_DATE = '0001-01-01'
@@ -106,7 +114,7 @@ def get_valid_subscribers() -> list[app_models.TelegramSubscriber]:
     return list(app_models.TelegramSubscriber.objects.filter(is_valid=True).all())
 
 
-def get_next_asf_courses(date: datetime, count: int = 3) -> list[app_models.AsfCourse]:
+def get_next_asf_courses(date: datetime, count: int = 2) -> list[app_models.AsfCourse]:
     
     if not isinstance(date, datetime):
         raise ValueError("The 'date' parameter must be a datetime object.")
