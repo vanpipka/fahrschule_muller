@@ -61,7 +61,7 @@
                             <ul>
                                 {% for i in exam_items %}
                                     {%if i.is_mofa %}
-                                        <li><a href="/exam/?type_id={{i.id}}"><text style="color: grey;"><b>{{i.name}}</b></a></li>
+                                        <li><a href="/exam/?type_id={{i.id}}"><b>{{i.name}}</b></a></li>
                                     {%else%}
                                         <li><a href="/exam/?type_id={{i.id}}"><text style="color: grey;">KL&nbsp;</text><b>{{i.name}}</b></a></li>
                                     {%endif%}
