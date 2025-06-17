@@ -5144,16 +5144,17 @@ h6 span {
   }
 }
 .content-block--taxi-4 {
-
+  background: var(--primary) url("../img/decor/taxi-4.webp") bottom left/cover no-repeat;
 }
 @media (max-width: 1440px) {
   .content-block--taxi-4 {
-
+    background: var(--primary) url("../img/decor/taxi-4-60.webp") bottom left/cover no-repeat;
   }
 }
 @media (max-width: 1080px) {
   .content-block--taxi-4 {
-
+    background: var(--primary);
+    background: var(--primary) url("../img/decor/taxi-4-60-s.webp") top center/cover no-repeat;
   }
 }
 .content-block__summ {

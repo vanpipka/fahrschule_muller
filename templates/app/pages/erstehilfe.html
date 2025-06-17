@@ -1,0 +1,80 @@
+{% extends "app/pages/base.html" %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+
+<div class="content-block content-block__container content-block--taxi-4">
+  <div class="pt80 pb40">
+  </div>
+  <div class="content-block__body pb80">
+
+    <div class="content-block__title">
+      <h1 class="title-1">Erste-Hilfe-Kurs und weitere Unterlagen für den Führerschein</h1>
+      <h2 class="title-3"></h2>
+      <div class="title-sub"></div>
+    </div>
+    <div class="content-block__text">
+      <p>Der Erste-Hilfe-Kurs ist ein verpflichtender Bestandteil der Führerscheinausbildung in Deutschland. </p>
+      <p> des Kurses ist es, grundlegende Kenntnisse in Erster Hilfe zu vermitteln – insbesondere für den Notfall im Straßenverkehr.</p>
+    </div>
+
+    <p>Wichtige Punkte auf einen Blick:</p>
+
+    <div class="content-block__list content-block__list--two">
+      <ul>
+
+        <li>
+          <div class="content-block__list-icon">
+            🚘
+          </div>
+
+          <div class="content-block__list-title"> Ohne Nachweis über einen Erste-Hilfe-Kurs kann der Führerscheinantrag nicht eingereicht werden.</div>
+        </li>
+
+        <li>
+          <div class="content-block__list-icon">
+            🕒 
+          </div>
+
+          <div class="content-block__list-title"> Dauer: ca. 7–9 Stunden an einem Tag. Der Kurs umfasst theoretische Grundlagen und praktische Übungen </div>
+        </li>
+
+
+        <li>
+          <div class="content-block__list-icon">
+            💡
+          </div>
+
+          <div class="content-block__list-title"> Gilt für alle Führerscheinklassen. Egal ob Auto, Motorrad oder Roller – der Kurs ist für alle verpflichtend.</div>
+        </li>
+      
+        <li>
+          <div class="content-block__list-icon">
+            🎉
+          </div>
+
+          <div class="content-block__list-title"> Unbefristete Gültigkeit. Die Bescheinigung verliert ihre Gültigkeit nicht (außer sie geht verloren).</div>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="content-block__btn">
+      <button 
+        type="button" 
+        class="btn btn--big btn--red" 
+        data-js-modal-target="modal-call" 
+        aria-label="Erste-Hilfe-Kurs bei SVS-Müller"
+        data-js-desc="Hinterlassen Sie eine Anfrage, wir werden Sie innerhalb von 15 Minuten zurückrufen und detailliert über die Möglichkeiten sprechen, ein Erste-Hilfe-Kurs zu machen." 
+        data-js-title="Erste-Hilfe-Kurs bei SVS-Müller">
+          Jetzt bewerben
+      </button>
+    </div>
+
+  </div>
+</div>
+
+{% include "app/includes/reviews_section.html" %}
+
+{% endblock %}

@@ -210,6 +210,18 @@ def stelle(request):
     )
 
 
+def erstehilfe(request):
+    return render(
+        request, 
+        'app/pages/erstehilfe.html',
+        context={
+            'title': 'Stellenangebote für Fahrlehrer – Arbeiten bei S.V.S. Müller in Herford',
+            'description': 'Suchen Sie eine neue Herausforderung als Fahrlehrer? Bei S.V.S. Müller in Herford erwartet Sie ein motiviertes Team, flexible Arbeitszeiten und attraktive Entwicklungsmöglichkeiten.',
+            'keywords': 'Fahrlehrer Stellenangebote Herford, Jobs Fahrschule, S.V.S. Müller, Fahrlehrer gesucht, Karriere Fahrschule',
+            }   
+    )
+
+
 def products(request):
     return render(
         request, 

@@ -60,10 +60,11 @@
                             <button type="button" class="nav-list-menu__parent-btn" data-js-menu-list="">Teste dich...</button>
                             <ul>
                                 {% for i in exam_items %}
-                                <!--TODO-->
-                                <!--Mofa - убрать класс (это отдельная категория)-->
-                                <!--выделить категорию цветом отдельно от KL-->
-                                <li><a href="/exam/?type_id={{i.id}}"><text style="color: grey;">KL&nbsp;</text><b>{{i.name}}</b></a></li>
+                                    {{if i.name = "Mofa"}}
+                                        <li><a href="/exam/?type_id={{i.id}}"><text style="color: grey;"><b>{{i.name}}</b></a></li>
+                                    {{else}}
+                                        <li><a href="/exam/?type_id={{i.id}}"><text style="color: grey;">KL&nbsp;</text><b>{{i.name}}</b></a></li>
+                                    {{endif}}
                                 {% endfor %}
                             </ul>
                         </li>

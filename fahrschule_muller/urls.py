@@ -42,6 +42,7 @@ urlpatterns = [
     path('pkw/details', views.pkw_details, name='pkw_details'),
     path('karriere/ausbildung/', views.ausbildung, name='ausbildung'),
     path('karriere/stelle/', views.stelle, name='stelle'),
+    path('erstehilfe/', views.erstehilfe, name='erste_hilfe'),
     path('datenschutz/', views.datenschutz, name='datenschutz'),
     path('users/', include('users.urls')),
     path('exam/', include('exam.urls')),
