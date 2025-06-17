@@ -21,7 +21,7 @@ def get_exam_themes():
     settings = cache.get(key)
 
     if not settings:
-        settings = db_manager.get_themes() 
+        settings = db_manager.get_themes_for_header() 
         if settings:
             # Кэшируем на 24 часа
             cache.set(key, settings, 60 * 60 * 24)

@@ -97,7 +97,18 @@ def get_themes(count: int = 10) -> list[exam_models.Thema]:
         raise ValueError("The 'count' parameter must be a positive integer.")
 
     query_set = exam_models.Thema.objects.all()[:count]
+
     return list(query_set)
+
+
+def get_themes_for_header(count: int = 10) -> list[exam_models.Thema]:
+
+    themes = get_themes(count)
+
+    for theme in themes:
+        theme.is_mofa = theme.name == 'Mofa'
+
+    return themes
 
 
 def get_products(count: int = 10) -> list[app_models.OrderItem]:
