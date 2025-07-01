@@ -4,7 +4,9 @@ import services.const as const
 def exam_items(request):
     
     items = [x for x in utils.get_exam_themes() if str(x.id) != const.GRUND_STOFF_ID]
-    return {'exam_items': items}
+    return {
+        'exam_items': items
+    }
 
 
 def company_contacts(request):
@@ -15,4 +17,12 @@ def company_contacts(request):
         'company_email': settings.email if settings else '',
         'company_address': settings.address if settings else '',
         'company_mobile_phone': settings.mobile_phone if settings else '',
+    }
+
+
+def site_texts(request):
+
+    texts = utils.get_site_texts()
+    return {
+        'site_texts': texts
     }

@@ -3522,6 +3522,10 @@ h6 span {
   left: auto;
   right: 40px;
 }
+.slide-hero__btns--center {
+  left: 10%; 
+  right: 60%;
+}
 @media (max-width: 1024px) {
   .slide-hero__btns .btn {
     margin: 0 auto;

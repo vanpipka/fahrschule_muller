@@ -129,6 +129,29 @@ def b_17(request):
             }   
     )
 
+def b_196(request):
+    return render(
+        request, 
+        'app/pages/b_196.html',
+        context = {
+            'title': 'Motorradfahren mit dem Führerschein B196 – S.V.S. Müller in Herford',
+            'description': 'Erweitern Sie Ihre Fahrerlaubnis Klasse B um B196 und fahren Sie 125ccm Motorräder ohne zusätzliche Prüfung. Jetzt bei S.V.S. Müller anmelden!',
+            'keywords': 'Führerschein B196, 125er ohne Prüfung, Motorradfahren mit Klasse B, B196 Herford, Fahrschule S.V.S. Müller',
+        } 
+    )
+
+
+def gabelstapler(request):
+    return render(
+        request, 
+        'app/pages/gabelstapler.html',
+        context = {
+            'title': 'Motorradfahren mit dem Führerschein B196 – S.V.S. Müller in Herford',
+            'description': 'Erweitern Sie Ihre Fahrerlaubnis Klasse B um B196 und fahren Sie 125ccm Motorräder ohne zusätzliche Prüfung. Jetzt bei S.V.S. Müller anmelden!',
+            'keywords': 'Führerschein B196, 125er ohne Prüfung, Motorradfahren mit Klasse B, B196 Herford, Fahrschule S.V.S. Müller',
+        } 
+    )
+
 
 def aufbauseminare(request):
     return render(
@@ -136,6 +159,18 @@ def aufbauseminare(request):
         'app/pages/aufbauseminare.html',
         context={
             'title': 'Aufbauseminare für Fahranfänger und Punkteauffällige – S.V.S. Müller Herford',
+            'description': 'Unsere Aufbauseminare (ASF & FES) helfen Ihnen, Fahrverhalten zu verbessern und Punkte abzubauen. Professionelle Nachschulungen in Herford.',
+            'keywords': 'Aufbauseminar Herford, ASF, FES, Punkteabbau, Fahrschule S.V.S. Müller, Nachschulung',
+            }   
+    )
+
+
+def anmeldung360(request):
+    return render(
+        request, 
+        'app/pages/anmeldung_360.html',
+        context={
+            'title': 'Online Anmeldung – S.V.S. Müller Herford',
             'description': 'Unsere Aufbauseminare (ASF & FES) helfen Ihnen, Fahrverhalten zu verbessern und Punkte abzubauen. Professionelle Nachschulungen in Herford.',
             'keywords': 'Aufbauseminar Herford, ASF, FES, Punkteabbau, Fahrschule S.V.S. Müller, Nachschulung',
             }   
@@ -249,6 +284,7 @@ def products_detail(request):
 
 
 def anfrage(request):
+    
     if request.method == "POST":
         try:
             request_body = json.loads(request.body)

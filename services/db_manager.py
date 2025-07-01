@@ -11,6 +11,13 @@ def get_site_settings() -> app_models.SiteSettings:
         return None
     
 
+def get_site_texts() -> dict[str, str]:
+    try:
+        return dict(app_models.SiteTexts.objects.values_list('key', 'text'))
+    except app_models.SiteTexts.DoesNotExist:
+        return []
+    
+
 def check_and_save_anmeldung(data):
 
     EMPTY_DATE = '0001-01-01'

@@ -14,12 +14,30 @@ class SiteSettings(models.Model):
         return "Настройки сайта"
 
     class Meta:
-        verbose_name = "Настройки сайта"
+        verbose_name = "Настройка сайта"
         verbose_name_plural = "Настройки сайта"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         cache.delete('site_settings_cache')
+
+
+class SiteTexts(models.Model):
+    
+    key = models.CharField(max_length=50, default="", unique=True)
+    text = models.TextField(default="", blank=True)
+
+
+    def __str__(self):
+        return "Тексты сайта"
+
+    class Meta:
+        verbose_name = "Текст сайта"
+        verbose_name_plural = "Тексты сайта"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        cache.delete('site_texts_cache')
 
 
 class Message(models.Model):
@@ -70,7 +88,6 @@ class Review(models.Model):
             self.type = "clickclick"
         else:
             self.type = ""
-    
 
 
 class TelegramSubscriber(models.Model):

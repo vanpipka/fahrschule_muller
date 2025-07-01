@@ -404,7 +404,9 @@ document.addEventListener("DOMContentLoaded", function () {
       
       form.addEventListener('submit', function (event) {
 
-        if (event.target.name = 'asf') { return };  // исключаем из обработки форму asf
+        console.log('Отправка формы:', event.target.name);
+        if (event.target.name == 'asf') { return };  // исключаем из обработки форму asf
+        console.log('Ручная отправка формы:', event.target.name);
 
         event.preventDefault();
 
